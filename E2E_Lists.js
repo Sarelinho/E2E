@@ -15,8 +15,8 @@ const myPath = "";
 
 // List of Dishes
 
-const Shakshuka = new Dish("שקשוקה", ing_tomato, ing_onion, ing_parsley, ing_eggs, ing_paprika);
 const Pancake = new Dish("פנקייק", ing_eggs, ing_milk, ing_flour, ing_sugar, ing_maple);
+const Shakshuka = new Dish("שקשוקה", ing_tomato, ing_onion, ing_parsley, ing_eggs, ing_paprika);
 
 // List of Ingredients
 
