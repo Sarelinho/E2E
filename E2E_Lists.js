@@ -1,10 +1,10 @@
 function Dish(name, ingred1, ingred2, ingred3, ingred4, ingred5) {
-  this.DishName = "name";
-  this.Ingredient1 = "none";
-  this.Ingredient2 = "none";
-  this.Ingredient3 = "none";
-  this.Ingredient4 = "none";
-  this.Ingredient5 = "none";
+  this.DishName = name;
+  this.Ingredient1 = ingred1;
+  this.Ingredient2 = ingred2;
+  this.Ingredient3 = ingred3;
+  this.Ingredient4 = ingred4;
+  this.Ingredient5 = ingred5;
 }
 
 const DishList = [
