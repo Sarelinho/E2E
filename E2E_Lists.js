@@ -1,21 +1,25 @@
 function Dish(name, ingred1, ingred2, ingred3, ingred4, ingred5) {
-  this.DishName = name;
-  this.Ingredient1 = ingred1;
-  this.Ingredient2 = ingred2;
-  this.Ingredient3 = ingred3;
-  this.Ingredient4 = ingred4;
-  this.Ingredient5 = ingred5;
-}
+    this.DishName = name;
+    this.Ingredient1 = ingred1;
+    this.Ingredient2 = ingred2;
+    this.Ingredient3 = ingred3;
+    this.Ingredient4 = ingred4;
+    this.Ingredient5 = ingred5;
+  }
+  
+  const DishList = [
+    Pancake, Shakshuka,Kuba_selek,Knafe,Ingera,Makluba,Memulaim,Musaka,Matbuha,Kuskus,FishandChips,FishMarokae,
+    Arayes,PastaAlfredo,Mzadara,MukpazTailandi,Guakamoli,GormeySbazi,PashdidatTiras,MarakHrira,SalatKapraza,
+    OzneyHaman,RegelKrusha,MeoravYerushalmi,SalatOlivia,KzizotDagim,Sufganya,Verniki,Mafrum,Falafel,Piza,BorekasBasar,
+    Mukpaz,HaminIsraeli,Shnizel,HavitatYerek,Ugat_gvina,ArtishokMemule,UgiyotTmarim,Kneydalah
 
-const DishList = [
-	Shakshuka, Pancake
-];
-
-const myPath = "";
-
-// List of Dishes
-
- const Pancake = new Dish("פנקייק", ing_eggs, ing_milk, ing_flour, ing_sugar, ing_maple);
+  ];
+  
+  const myPath = "";
+  
+  // List of Dishes
+  
+  const Pancake = new Dish("פנקייק", ing_eggs, ing_milk, ing_flour, ing_sugar, ing_maple);
     const Shakshuka = new Dish("שקשוקה", ing_tomato, ing_onion, ing_parsley, ing_eggs, ing_paprika);
     const Kuba_selek=new Dish ("קובה סלק", ing_selek, ing_solet, ing_celery,ing_meat,ing_Tomatopaste ) ;
     const Knafe =new Dish ("כנאפה", ing_cheese, ing_Kaddif , ing_roseWater,ing_sugarWater,ing_fistuk ) ;
@@ -24,7 +28,7 @@ const myPath = "";
     const Memulaim =new Dish ("ממולאים",ing_orez, ing_gamba ,  ing_tomato,ing_meat,ing_onion ) ;
     const Musaka =new Dish ("מוסקה",ing_hazil , ing_onion ,  ing_tomato,ing_meat,ing_parsley) ;
     const Matbuha =new Dish ("מטבוחה",ing_shum , ing_pilplelHarif ,  ing_tomato,ing_shemen,ing_Tomatopaste) ;
-    const Muskus =new Dish ("קוסקוס",ing_solet ,  ing_dlahat ,  ing_chicken,ing_gezer ,ing_kruv) ;
+    const Kuskus =new Dish ("קוסקוס",ing_solet ,  ing_dlahat ,  ing_chicken,ing_gezer ,ing_kruv) ;
     const FishandChips =new Dish ("פיש&צ'יפס",ing_fish ,  ing_bira , ing_tapuahAdama,ing_shemen ,ing_flour) ;
     const FishMarokae =new Dish ("דג מרוקאי",ing_fish ,  ing_paprika ,ing_pilplelHarif,ing_shemen , ing_gamba) ;
     const Arayes =new Dish ("עראייס",ing_pita , ing_shemZait ,ing_meat,ing_parsley , ing_onion) ;
@@ -41,9 +45,20 @@ const myPath = "";
     const MeoravYerushalmi=new Dish ("מעורב ירושלמי",ing_Thol , ing_HazeOf ,ing_Hawayeg,ing_Kurkum , ing_onion) ;
     const SalatOlivia=new Dish ("סלט אוליביה",ing_tapuahAdama , ing_gezer ,ing_eggs,ing_HazeOf , ing_Mayonez) ;
     const KzizotDagim=new Dish ("קציצות דגים",ing_fish , ing_eggs ,ing_onion,ing_Tomatopaste , ing_solet) ;
-
-
-
+    const Sufganya=new Dish ("סופגניה",ing_sugar , ing_flour ,ing_Riba,ing_AvkatSugar ,ing_shemen ) ;
+    const Verniki=new Dish ("ורניקי",ing_tapuahAdama , ing_kruv ,ing_Riba,ing_BasarTahun ,ing_Pitryot ) ;
+    const Mafrum=new Dish ("מפרום",ing_Burgul , ing_kruvit ,ing_onion,ing_BasarTahun ,ing_parsley ) ;
+    const Falafel=new Dish ("פלאפל",ing_Humus , ing_onion ,ing_parsley,ing_shum ,ing_pilplelHarif ) ;
+    const Piza=new Dish ("פיצה",ing_flour , ing_Shmarim ,ing_Tomatopaste,ing_cheese ,ing_shemZait ) ;
+    const BorekasBasar=new Dish ("בורקס בשר",ing_Bazek_filo , ing_BasarTahun ,ing_tomato,ing_Baharat ,ing_shemZait ) ;
+    const Mukpaz=new Dish ("מוקפץ",ing_Pasta , ing_HazeOf ,ing_gezer,ing_onion ,ing_gamba ) ;
+    const HaminIsraeli=new Dish ("חמין",ing_eggs , ing_Hita ,ing_tapuahAdama,ing_Sheuit ,ing_orez ) ;
+    const Shnizel=new Dish ("שניצל",ing_eggs , ing_PerureyLehem ,ing_HazeOf,ing_Sumsum ,ing_HardalDizon ) ;
+    const HavitatYerek=new Dish ("שניצל",ing_eggs , ing_shemZait ,ing_onion,ing_parsley ,ing_Melah ) ;
+    const Ugat_gvina=new Dish ("עוגת גבינה",ing_eggs , ing_flour ,ing_GvinaLevana,ing_SugarVanil ,ing_InstantPudingVanil ) ;
+    const ArtishokMemule=new Dish (" ארטישוק ממולא",ing_Artishok , ing_Silan ,ing_shum,ing_celery ,ing_BasarTahun ) ;
+    const UgiyotTmarim=new Dish (" עוגיות תמרים ",ing_MimrahTmarim , ing_flour ,ing_eggs,ing_Mahmha ,ing_AvkatAfiya ) ;
+    const Kneydalah=new Dish (" קניידלך ",ing_KemahMaza , ing_eggs ,ing_shemen,ing_MarakOf ,ing_Melah ) ;
 
 
     
@@ -113,3 +128,28 @@ const myPath = "";
     const ing_HazeOf= myPath + "";
     const ing_Hawayeg= myPath + "";
     const ing_Mayonez= myPath + "";
+    const ing_Riba= myPath + "";
+    const ing_AvkatSugar= myPath + "";
+    const ing_Water= myPath + "";
+    const ing_Pitryot= myPath + "";
+    const ing_BasarTahun= myPath + "";
+    const ing_Burgul= myPath + "";
+    const ing_Humus= myPath + "";
+    const ing_Bazek_filo= myPath + "";
+    const ing_Baharat= myPath + "";
+    const ing_Pasta= myPath + "";
+    const ing_Hita= myPath + "";
+    const ing_PerureyLehem= myPath + "";
+    const ing_Sumsum= myPath + "";
+    const ing_HardalDizon= myPath + "";
+    const ing_Melah= myPath + "";
+    const ing_GvinaLevana= myPath + "";
+    const ing_SugarVanil =myPath + "";
+    const ing_InstantPudingVanil =myPath + "";
+    const ing_Artishok =myPath + "";
+    const ing_Silan=myPath + "";
+    const ing_MimrahTmarim=myPath + "";
+    const ing_Mahmha=myPath + "";
+    const ing_AvkatAfiya=myPath + "";
+    const ing_KemahMaza=myPath + "";
+    const ing_MarakOf=myPath + "";
