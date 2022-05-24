@@ -8,7 +8,7 @@ function Dish(name, ingred1, ingred2, ingred3, ingred4, ingred5) {
   }
   
   const DishList = [
-    Pancake, Shakshuka,Kuba_selek,Knafe,Ingera,Makluba,Memulaim,Musaka,Matbuha,Kuskus,FishandChips,FishMarokae,
+    Pancake, Shakshuka, Kuba_selek, Knafe, Ingera, Makluba, Memulaim, Musaka,Matbuha,Kuskus,FishandChips,FishMarokae,
     Arayes,PastaAlfredo,Mzadara,MukpazTailandi,Guakamoli,GormeySbazi,PashdidatTiras,MarakHrira,SalatKapraza,
     OzneyHaman,RegelKrusha,MeoravYerushalmi,SalatOlivia,KzizotDagim,Sufganya,Verniki,Mafrum,Falafel,Piza,BorekasBasar,
     Mukpaz,HaminIsraeli,Shnizel,HavitatYerek,Ugat_gvina,ArtishokMemule,UgiyotTmarim,Kneydalah
