@@ -8,10 +8,10 @@ function Dish(name, ingred1, ingred2, ingred3, ingred4, ingred5) {
 }
   
 const DishList = [
-    Arayes,         Artichoke,      Borekas,    Borsht,         Caprese,        Cheesecake, CornPie,    DateCookies,    Doughnuts,      Falafel, 
-    FishandChips,   FishSticks,     Guacamole,  GormeySbazi,    Hamin,          Hrira,      Ingera,     Kholodets,      Knafe,          Kneidlech, 
-    Kuba_selek,     Kuskus,         Mafrum,     Makluba,        MaroccanFish,   Matbuha,    Memulaim,   Mjadara,        Musaka,         Olivier,        
-    Omelet,         OzneyHaman,     Pancake,    PastaAlfredo,   Pizza,          Shakshuka,  Schnitzel,  StirFriedSalad, ThaiStirFried,  Yerushalmi
+    Arayes, Artichoke, Borekas, Borsht, Caprese, Cheesecake, CornPie, DateCookies, Doughnuts, Falafel, 
+    FishandChips, FishSticks, Guacamole, GormeySbazi, Hamin, Hrira, Ingera, Kholodets, Knafe, Kneidlech, 
+    Kuba_selek, Kuskus, Mafrum, Makluba, MaroccanFish, Matbuha, Memulaim, Mjadara, Musaka, Olivier,        
+    Omelet, OzneyHaman, Pancake, PastaAlfredo, Pizza, Shakshuka, Schnitzel, StirFriedSalad, ThaiStirFried, Yerushalmi
 ];
   
 const myPath = "";
