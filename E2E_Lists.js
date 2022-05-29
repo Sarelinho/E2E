@@ -139,7 +139,6 @@ const ing_turmeric      = myPath + "";  // כורכום
 const ing_wheat         = myPath + "";  // חיטה
 const ing_yeast         = myPath + "";  // שמרים
     const ing_HardalDizon= myPath + "";// חרדל דיז'ון
-    const ing_Melah= myPath + "";// מלח
     const ing_GvinaLevana= myPath + "";// גבינה לבנה
     const ing_SugarVanil =myPath + "";// סוכר וניל
     const ing_InstantPudingVanil =myPath + "";// פוגינג וניל 
