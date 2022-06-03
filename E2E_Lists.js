@@ -1,10 +1,12 @@
-function Dish(name, ingred1, ingred2, ingred3, ingred4, ingred5) {
-    this.DishName = name;
-    this.Ingredient1 = ingred1;
-    this.Ingredient2 = ingred2;
-    this.Ingredient3 = ingred3;
-    this.Ingredient4 = ingred4;
-    this.Ingredient5 = ingred5;
+class Dish {
+    constructor(name, ingr1, ingr2, ingr3, ingr4, ingr5) {
+        this.DishName = name;
+        this.Ingredient1 = ingr1;
+        this.Ingredient2 = ingr2;
+        this.Ingredient3 = ingr3;
+        this.Ingredient4 = ingr4;
+        this.Ingredient5 = ingr5;
+    }
 }
   
 const DishList = [
