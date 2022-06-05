@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload="startLevel1()">
     <div id="container">
         <header> 
-            <h1>חידון התאבון</h1>
+            <h1>חידון המאכלים</h1>
             <p id="head">פרוייקט גמר לקורס E2E, תשפ"ב, מכללת כנרת</p>
+            <!--<button id="testbtn" onclick="startQuest()">TEST</button>-->
         </header>
 
         <div class="box box1">
@@ -23,24 +24,30 @@
         </div>
 
         <div class="box box2">
-            <h1 id="wellcome">ברוכים הבאים!</h1>
-            <p id="well">
-                חידון המאכלים שיפתח לכם את התאבון!
-                <br/>
-                 בחידון זה המשתתף יעבור שלושה שלבים
-                <br/>
-                 בכל שלב יענה המשתתף על חמש שאלות בדרכים שונות,
-                <br/>
-                 בתחילת כל שלב יופיע הסבר על כלליו ודרכי המענה על השאלות.
-                <br/>
-                 לפני שמתחילים, יש להצטייד בבקבוק מים ומשהו קטן לנשנש כי חידון זה יעשה אתכם רעבים.
-                <br/>  
-                על מנת להתחיל בחידון יש ללחוץ על כפתור התחל
-                <br/>
-                אנו מאחלים לכם בהצלחה ושתהנו בטירוףף!!! וכמובן שיהיה לכם טעים!!! 
-            </p>
+            <h1>שלב א':
+                <br>
+                נחש מאכל לפי רשימת המרכיבים
+                
+            </h1>
+            <h3 id="QuestNum"></h3>
+            <div id="images">
+                <!--
+                <img src="images/Onion.jpg" alt="">
+                <img src="images/egg.jpg" alt="">
+                <img src="images/tomato.jpg" alt="">
+                <img src="images/parsley.jpg" alt="">
+                <img src="images/sweet_paprika.jpg" alt="">
+-->
 
-            <a onclick="startNewGame()" id="button" href="pageA.html"><b>התחל בחידון</b></a>
+            </div>
+            <div id="answers">
+                <div class = "btn_answer"><p id="Ans_1"></p></div>
+                <div class = "btn_answer"><p id="Ans_2"></p></div>
+                <div class = "btn_answer"><p id="Ans_3"></p></div>
+                <div class = "btn_answer"><p id="Ans_4"></p></div>
+            </div> 
+
+            
         </div>
 
         <div class="box box3">
@@ -71,11 +78,12 @@
             <p id="foot">
                 בוצע ע"י
                 <br/>
-                אזגורי ישי, אזולאי שראל, גוסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ'רקסוב איתן
+                אזגורי ישי, אזולאי שראל, גוסקובסקי גל, דם יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ'רקסוב איתן
             </p>
         </footer>
     </div>
+
     <script src="E2E_Lists.js"></script>
-    <script src="e2e_proj.js"></script>
+    <script src="Level1.js"></script>
 </body>
 </html>
