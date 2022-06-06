@@ -18,7 +18,7 @@ class Dish {
 //===============================================================================
 // List of Ingredients
 
-const myPath = "";
+const myPath = "dummy";
   
 const ing_dummy = "";
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
