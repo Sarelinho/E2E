@@ -21,9 +21,9 @@ class Dish {
 const myPath = "";
   
 const ing_dummy = "";
-const ing_artichoke     = myPath + "";  // ארטישוק
-const ing_avocado       = myPath + "";  // אבוקדו
-const ing_baharat       = myPath + "";  // בהרט
+const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
+const ing_avocado       = myPath + "Avocado.jpg";  // אבוקדו
+const ing_baharat       = myPath + "Baharat.jpg";  // בהרט
 const ing_bakingpowder  = myPath + "BakingPowder.jpg";  // אבקת עפיה
 const ing_balsamic      = myPath + "";  // רוטב בלסמי
 const ing_basil         = myPath + "";  // בזיליקום
