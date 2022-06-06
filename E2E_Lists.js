@@ -18,9 +18,9 @@ class Dish {
 //===============================================================================
 // List of Ingredients
 
-const myPath = "dummy";
+const myPath = "";
   
-const ing_dummy = "";
+const ing_dummy = "dummy";
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
 const ing_avocado       = myPath + "Avocado.jpg";  // אבוקדו
 const ing_baharat       = myPath + "Baharat.jpg";  // בהרט
