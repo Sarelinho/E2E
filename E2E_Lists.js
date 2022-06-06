@@ -1,3 +1,8 @@
+document.getElementsById("headerText1").innerHTML="חידון המאכלים";
+document.getElementsById("heade").innerHTML="פרוייקט גמר לקורס E2E, תשפ"ב, מכללת כנרת";
+document.getElementsById("foot").innerHTML=" בוצע ע"י
+                <br/>
+                אזגורי ישי, אזולאי שראל, גוסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ'רקסוב איתן";
 
 class Dish {
   constructor(name, ingr1, ingr2, ingr3, ingr4, ingr5) {
