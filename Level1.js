@@ -16,15 +16,17 @@ function startLevel1(){
     myIdx = 0;
     myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
 
+    /*
     let test = "";
     for (let i =0; i<myQuestions.length; i++){
         test += `${DishList[myQuestions[i]].DishName} -- `;    
     }
     alert (test);
-
-    
+*/
+    // Arrange the images and answer-options:
     runQuest(myQuestions[myIdx], myIdx);
-
+    
+    // Respond on player's choice:
     for (var i = 0; i < answerTags.length; i++) {
         answerTags[i].addEventListener("click", getAttempt);
     }  
@@ -38,7 +40,6 @@ function startLevel1(){
 
 function runQuest(v, idx) {
 
-   // while (myIdx < 5){
     if(myIdx >= 5){
         alert("Finish");
     } 
@@ -138,8 +139,7 @@ function randAnswers (correctIndex, myRnd) {
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
-  }
-
+}
   
 function myTest1(v) {
     return v == myRndInt;
@@ -157,7 +157,7 @@ function removeAllChildNodes(parent) {
 
 function getAttempt(){
     if(this.textContent == DishList[myQuestions[myIdx]].DishName){
-        alert("good");
+        alert("Correct answer!");
         myIdx++;
         runQuest(myQuestions[myIdx], myIdx);
     }
