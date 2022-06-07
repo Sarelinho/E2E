@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload="startLevel1()">
     <div id="container">
         <header> 
             <h1 id="headerText1"></h1>
@@ -23,24 +23,30 @@
         </div>
 
         <div class="box box2">
-            <h2 id="wellcome">שלב א'</h2>
-            <p id="well">
-                שלב ראשון, בשלב זה יוצגו לפניכם מספר תמונות של מרכיבי מתכון מסויים,
-                <br/>
-                 עלכם לבחור מהו המאכל אותו ניתן להכין עם מרכיבים אלה, מבין ארבע אפשרויות.
-                <br/>
-                 אופן המענה בשלב זה:
-                <br/>
-                 ליפנכם מוצב בונקר העומד על מסלול ממוספר מאחד עד ארבע וקוביה,
-                <br/>
-                 כאשר מספר אחד מייצג את התשובה השמאלית ביותר ומספר ארבע מייצג את התשובה הימנית ביותר.
-                <br/>  
-                עליכם להניח את הקוביה על המספר שמייצג את התשובה הנכונה.
-                <br/>
-                בהצלחה! 
-            </p>
+            <h1 style="margin-top: 20px;">שלב א':
+                <br>
+                נחש מאכל לפי רשימת המרכיבים
+                
+            </h1>
+            <h3 id="QuestNum"></h3>
+            <div id="images">
+                <!--
+                <img src="images/Onion.jpg" alt="">
+                <img src="images/egg.jpg" alt="">
+                <img src="images/tomato.jpg" alt="">
+                <img src="images/parsley.jpg" alt="">
+                <img src="images/sweet_paprika.jpg" alt="">
+-->
 
-            <a id="button" href="pageA1.html"><b>התחל בשלב</b></a>
+            </div>
+            <div id="answers">
+                <div class = "btn_answer"><p id="Ans_1"></p></div>
+                <div class = "btn_answer"><p id="Ans_2"></p></div>
+                <div class = "btn_answer"><p id="Ans_3"></p></div>
+                <div class = "btn_answer"><p id="Ans_4"></p></div>
+            </div> 
+
+            
         </div>
 
         <div class="box box3">
@@ -73,6 +79,6 @@
     </div>
 
     <script src="E2E_Lists.js"></script>
-
+    <script src="Level1.js"></script>
 </body>
 </html>
