@@ -40,8 +40,8 @@ function startLevel1(){
 
 function runQuest(v, idx) {
 
-    if(myIdx >= 5){
-        alert("Finish");
+    if(myIdx >= numDishes){
+        alert("Gave over");
     } 
     else {
         // 1. Populate the images of the ingredients
@@ -65,7 +65,7 @@ function runQuest(v, idx) {
 
         // Create array of 4 Dish-Names (including the correct answer)
         myCorrectAnswer = getRndInteger(0, 4); // Store random index 0 to 3 to be used for "correct answer"
-        var myOptions = randAnswers(v, myCorrectAnswer);
+        var myOptions = randAnswers(v, myCorrectAnswer); // Create an array of 4 Dish-names, one of them is "correct"
 
         // Populate the answer buttons
         myAnswerButtons = ["Ans_1", "Ans_2", "Ans_3", "Ans_4"]
@@ -84,11 +84,11 @@ function getDishes () {
     var  myDishArray = [];
     
     for (let i = 0; i < numDishes; i++){
-        myRndInt = getRndInteger(0, 40);
+        myRndInt = getRndInteger(0, DishList.length);
         let isUsed = myDishArray.some(myTest1);
 
         while (isUsed) {
-            myRndInt = getRndInteger(0, 40);
+            myRndInt = getRndInteger(0, DishList.length);
             isUsed = myDishArray.some(myTest1);
         }
         myDishArray[i] = myRndInt;
@@ -113,12 +113,12 @@ function randAnswers (correctIndex, myRnd) {
 
     for (let i = 0; i < 4; i++) { 
         if (i != myRnd) {
-            myRndInt = getRndInteger(0, 40);
+            myRndInt = getRndInteger(0, DishList.length);
             myString = DishList[myRndInt].DishName;
             isUsed = myArray.some(myTest2);
 
             while(isUsed || (myRndInt == myRnd)) {
-                myRndInt = getRndInteger(0, 40);
+                myRndInt = getRndInteger(0, DishList.length);
                 myString = DishList[myRndInt].DishName;
                 isUsed = myArray.some(myTest2);
             }
