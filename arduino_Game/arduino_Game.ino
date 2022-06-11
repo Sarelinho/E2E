@@ -101,13 +101,12 @@ void loop() {
 
       MainGame();
 
-      if (millis() - timetostartgame > 30000) {
+      if (millis() - timetostartgame > 60000) {
         gamestate = backdoor;
       }
       break;
     case backdoor:
       LedOff();
-      delay(400);
       gamestate = wait4start ;
       break;
 
@@ -193,7 +192,7 @@ void controljoystick() {
     yellowoff();
 
   } else {
-    Yellowon();
+    yellowon();
   }
 }
 
@@ -203,7 +202,7 @@ void yellowoff() {
   digitalWrite(yellowled, LOW);
   joystate = false;
 }
-void Yellowon() {
+void yellowon() {
   digitalWrite(yellowled, HIGH);
   joystate = true;
 }
@@ -245,7 +244,7 @@ void MainGame() {
         int y = analogRead(vrY);
         if (y == 0 && millis() - timeforjoystick > joyRate) {
 
-          controljoystick();
+          controljoystick(); //control  for the LED and to REST time for "timeforjoystick"
 
           flag = 2;
           check = false;
@@ -279,6 +278,7 @@ void MainGame() {
       Serial.println(" 2 ");
       timeforjoystick = millis();
       timeforjoystick2 = millis();
+
       isRedon = false;
       isGreenon = false;
       while (!check && flag == 2 && millis() - casespin  > casestime ) {
@@ -433,10 +433,10 @@ void MainGame() {
 
 void LedOff() {
 
-  digitalRead(redled) == LOW;
-  digitalRead(greenled) == LOW;
-  digitalRead(blueled) == LOW;
-  digitalRead(yellowled) == LOW;
+  digitalWrite(redled, LOW);
+  digitalWrite(greenled, LOW);
+  digitalWrite(blueled, LOW);
+  digitalWrite(yellowled, LOW);
 
 
 }
