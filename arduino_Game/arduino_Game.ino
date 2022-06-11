@@ -1,7 +1,7 @@
 #define redbtn 12
 #define greenbtn 4
 #define bluebtn 3
-#define yellowbtn 2
+
 
 #define redled 11
 #define greenled 9
@@ -13,7 +13,7 @@
 
 
 
-int btns[4] = { yellowbtn , bluebtn };
+
 
 bool isRedon;
 bool isGreenon;
@@ -190,10 +190,10 @@ void Greenoff() {
 void controljoystick() {
   timeforjoystick = millis();
   if (joystate) {
-    Yellowon();
+    yellowoff();
 
   } else {
-    yellowoff();
+    Yellowon();
   }
 }
 
@@ -201,11 +201,11 @@ void controljoystick() {
 void yellowoff() {
 
   digitalWrite(yellowled, LOW);
-  joystate = true;
+  joystate = false;
 }
 void Yellowon() {
   digitalWrite(yellowled, HIGH);
-  joystate = false;
+  joystate = true;
 }
 //--------------------------------------------------------JOYSTICK UP
 
@@ -426,29 +426,6 @@ void MainGame() {
       }
       break;
 
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------PRESS TO START THE GAME
-
-bool BLUESTART() {
-
-
-  int cnt = 0;
-  for (int k = 0; k < 2; k++) {
-    if (digitalRead(btns[k]) == LOW) {
-      cnt++;
-    }
-    if (cnt = 2) {
-
-      return true;
-
-    } else {
-
-      return false;
-
-    }
   }
 }
 
