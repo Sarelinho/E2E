@@ -7,7 +7,7 @@
 }
 
 #container{
-    height: 960px;
+    height: 738px;
     width: 98%;
     margin: auto;
     display: grid;
@@ -43,18 +43,17 @@ header h1{
 }
 
 .box1 #imgBitzoa{
-    width: 40%;
-    height: 40%;
+    width: 60%;
+    height: 20%;
     margin-top: 20px;
 }
 
 .box1 #masov{
-    margin-top: 70px;
+    margin-top: 100px;
 }
 
 .box1 #feedback{
     margin-top: 50px;
-    margin-bottom: 70px;
 }
 
 .box2{
@@ -74,6 +73,7 @@ header h1{
     font-size: 20px;
 }
 
+/*-------pageB1 Start--------*/
 .box2 #button{
     border: black solid 1px;
     display: block;
@@ -94,8 +94,7 @@ header h1{
     padding: 10px 40px;
     border: white solid 1px;
     background-color: rgba(10, 10, 137, 0.5);
-    margin-top: 20px;
-    margin-right: 40%;
+    margin:20px auto;
 }
 
 .box2 #bottom{
@@ -170,7 +169,9 @@ header h1{
     margin-right: 0;
     margin-top: 0;
 }
+/*-------pageB1 end--------*/
 
+/*-------pageA1 start--------*/
 .box2 #images
 {
     width: 100%;
@@ -219,11 +220,36 @@ height: 130px;
     color: aliceblue;
 }
 
+/*-------pageA1 end--------*/
 
 
+/*--------pageC1 start----------*/
 
+.box2 #gamesM{
+    display: grid;
+    grid-template-columns:repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr) ;
+    width: 95%;
+    height: 80%;
+    margin: 20px auto;
+    grid-gap: 3px;
+}
 
+.box2 #gamesM > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #595959 solid 4px;
+    border-radius: 10px;
+}
 
+.box2 #gamesM img{
+    width: 200px;
+    height: 96px;
+    border-radius: 10px;
+}
+
+/*--------pageC1 end----------*/
 
 .box3{
     color: white;
@@ -234,7 +260,11 @@ height: 130px;
     margin-top: 10px;
 }
 
-.box3 #level1{
+.box3 #level2 , #level1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 90%;
     height: 40%;
     margin-right: 3%;
@@ -245,41 +275,13 @@ height: 130px;
     padding-top: 5px;
 }
 
-.box3 #level1 #lvl1{
-    margin-bottom: 15px;
-    color: black;
-    
-}
-
-.box3 #level1 li{
-    width: 80%;
-    margin-right: 10%;
-    padding: 5px 1px;
-    background-color: #b3cd97;
-    border: black solid 1px;
-    border-radius: 4px;
-    margin-top: 3px;
-}
-
-.box3 #level2{
-    width: 90%;
-    height: 40%;
-    margin-right: 3%;
-    list-style-type: none;
-    background-color: #92a8d7;
-    margin-top: 10px;
-    color: black;
-    padding-top: 5px;
-}
-
-.box3 #level2 #lvl2{
+.box3 #lvl2 , #lvl1{
     margin-bottom: 15px;
     color: black;
 }
 
-.box3 #level2 li{
+.box3  li{
     width: 80%;
-    margin-right: 10%;
     padding: 5px 1px;
     background-color: #b3cd97;
     border: black solid 1px;
@@ -293,9 +295,9 @@ height: 130px;
     color: black;
     width: 90%;
     border-radius: 4px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: 3%;
-    margin-bottom: 10px;
+    
 }
 
 footer{
@@ -310,6 +312,6 @@ footer #foot{
     margin-right: 10px;
 }
 
-@media screen and (max-width: 600px) {
-    #container {height: 800px;}
+@media screen and (min-width: 1550px) {
+    #container {height: 960px;}
 }
