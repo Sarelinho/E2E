@@ -1,6 +1,7 @@
 #define redbtn 12
 #define greenbtn 4
 #define bluebtn 3
+#define yellowbtn 2
 
 
 #define redled 11
@@ -21,7 +22,7 @@ bool joystate;
 bool joystate2;
 bool check;
 bool startgame;
-
+bool trigger;
 
 
 int abletopressagain = 250;
@@ -34,6 +35,7 @@ unsigned long timeforjoystick2;
 unsigned long casespin;
 unsigned long timetostartgame;
 
+
 #define wait4start 1
 #define pingame 2
 #define gameon 3
@@ -45,13 +47,14 @@ int gamestate;
 #define answer3 3
 #define answer4 4
 #define answer5 5
-#define backdoor 6
+#define exitloop 6
+
 int currState;
 int flag = 1;
 
 
 void setup() {
-  // put your setup code here, to run once:
+
   Serial.begin(9600);
 
   pinMode(redbtn, INPUT_PULLUP);
@@ -69,13 +72,14 @@ void setup() {
   joystate2 = false;
   check = true;
   startgame = true;
-
+  trigger = true;
 
   redtimetopin = millis();
   greentimetopin = millis();
   timeforjoystick = millis();
   timeforjoystick2 = millis();
   casespin = millis();
+
 
   currState = answer1;
   gamestate = wait4start;
@@ -86,7 +90,7 @@ void loop() {
 
   startgame = true;
   switch (gamestate) {
-    case wait4start: Serial.println("start");
+    case wait4start: Serial.println("press BLUE button to start the game...");
       while (startgame) {
         if (digitalRead(bluebtn) == LOW) {
           startgame = false;
@@ -97,13 +101,13 @@ void loop() {
 
     case pingame: timetostartgame = millis();
       gamestate = gameon;
+      break;
     case gameon:
 
       MainGame();
+      reset();
+      gamestate = backdoor;
 
-      if (millis() - timetostartgame > 60000) {
-        gamestate = backdoor;
-      }
       break;
     case backdoor:
       LedOff();
@@ -121,11 +125,13 @@ void Controlredled() {
   if (isRedon) {
 
     Redoff();
-
+    Serial.println(" RED OFF ");
   } else {
 
 
     Redon();
+    Serial.println(" RED ON ");
+    Greenoff();
 
 
   }
@@ -137,7 +143,7 @@ void Redon() {
 
   digitalWrite(redled, HIGH);
   isRedon = true;
-  Serial.print(": RED on ");
+
 
 
 }
@@ -146,7 +152,7 @@ void Redoff() {
 
   digitalWrite(redled, LOW);
   isRedon = false;
-  Serial.print(": RED off ");
+
 }
 
 
@@ -158,11 +164,13 @@ void Controlgreenled() {
   if (isGreenon) {
 
     Greenoff();
-
+    Serial.println(" GREEN OFF ");
   } else {
 
 
     Greenon();
+    Serial.println(" GREEN ON ");
+    Redoff();
 
   }
 
@@ -172,14 +180,14 @@ void Greenon() {
 
   digitalWrite(greenled, HIGH);
   isGreenon = true;
-  Serial.print(": GREEN on ");
+
 }
 
 void Greenoff() {
 
   digitalWrite(greenled, LOW);
   isGreenon = false;
-  Serial.print(": GREEN off ");
+
 
 }
 
@@ -193,6 +201,7 @@ void controljoystick() {
 
   } else {
     yellowon();
+    blueoff();
   }
 }
 
@@ -214,6 +223,7 @@ void controljoystick2() {
     blueoff();
   } else {
     blueon();
+    yellowoff();
   }
 }
 
@@ -233,203 +243,241 @@ void blueon() {
 //--------------------------------------------------------MAIN GAME
 
 void MainGame() {
+  Serial.println("The game has started,you have 60 seconds to be done , GOOD LUCK.");
+  while (trigger) {
 
-  switch (currState) {
+    switch (currState) {
 
-    case answer1: Serial.println(" 1 ");
-      isRedon = false;
-      isGreenon = false;
-      while (check && flag == 1 && millis() - casespin  > casestime ) {
+      case answer1: Serial.println(" 1 ");
+        isRedon = false;
+        isGreenon = false;
+        while (check && flag == 1 && millis() - casespin  > casestime ) {
 
-        int y = analogRead(vrY);
-        if (y == 0 && millis() - timeforjoystick > joyRate) {
+          int y = analogRead(vrY);
+          if (y == 0 && millis() - timeforjoystick > joyRate) {
 
-          controljoystick(); //control  for the LED and to REST time for "timeforjoystick"
+            controljoystick();
 
-          flag = 2;
-          check = false;
-          currState = answer2;
-
-
-        } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
-
-          controljoystick2();
-
-          flag = 5;
-          currState = answer5;
-
-        } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
-
-          Controlredled();
+            flag = 2;
+            check = false;
+            currState = answer2;
 
 
-        }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
+          } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+
+            controljoystick2();
+
+            flag = 5;
+            currState = answer5;
+
+          } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
+
+            Controlredled();
 
 
-          Controlgreenled();
+          }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
+
+
+            Controlgreenled();
+
+          } else {
+            leaving();
+          }
+
 
         }
 
-      }
+        break;
 
-      break;
+      case answer2: Serial.println(" 2 ");
+        timeforjoystick = millis();
+        timeforjoystick2 = millis();
 
-    case answer2:
-      Serial.println(" 2 ");
-      timeforjoystick = millis();
-      timeforjoystick2 = millis();
+        isRedon = false;
+        isGreenon = false;
+        while (!check && flag == 2 && millis() - casespin  > casestime ) {
 
-      isRedon = false;
-      isGreenon = false;
-      while (!check && flag == 2 && millis() - casespin  > casestime ) {
+          int y = analogRead(vrY);
+          if (y == 0 && millis() - timeforjoystick > joyRate) {
 
-        int y = analogRead(vrY);
-        if (y == 0 && millis() - timeforjoystick > joyRate) {
-
-          controljoystick();
-          flag = 3;
-          check = true;
-          currState = answer3;
+            controljoystick();
+            flag = 3;
+            check = true;
+            currState = answer3;
 
 
-        } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+          } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
 
-          controljoystick2();
-          flag = 1;
-          check = true;
-          currState = answer1;
+            controljoystick2();
+            flag = 1;
+            check = true;
+            currState = answer1;
 
-        } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
+          } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
 
-          Controlredled();
+            Controlredled();
 
 
-        }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
+          }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
 
-          Controlgreenled();
+            Controlgreenled();
+
+          } else {
+            leaving();
+          }
+
 
         }
+        break;
+      case answer3: Serial.println(" 3 ");
 
-      }
-      break;
-    case answer3:
-      Serial.println(" 3 ");
+        timeforjoystick = millis();
+        timeforjoystick2 = millis();
+        isRedon = false;
+        isGreenon = false;
 
-      timeforjoystick = millis();
-      timeforjoystick2 = millis();
-      isRedon = false;
-      isGreenon = false;
-      while (check && flag == 3 && millis() - casespin  > casestime ) {
+        while (check && flag == 3 && millis() - casespin  > casestime ) {
 
-        int y = analogRead(vrY);
-        if (y == 0 && millis() - timeforjoystick > joyRate) {
+          int y = analogRead(vrY);
+          if (y == 0 && millis() - timeforjoystick > joyRate) {
 
-          controljoystick();
-          flag = 4;
-          check = false;
-          currState = answer4;
+            controljoystick();
+            flag = 4;
+            check = false;
+            currState = answer4;
 
 
-        } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+          } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
 
-          controljoystick2();
-          flag = 2;
-          check = false;
-          currState = answer2;
+            controljoystick2();
+            flag = 2;
+            check = false;
+            currState = answer2;
 
-        } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
+          } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
 
-          Controlredled();
-
-
-        }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
-
-          Controlgreenled();
-
-        }
-
-      }
-    case answer4:
-      Serial.println(" 4 ");
-
-      timeforjoystick = millis();
-      timeforjoystick2 = millis();
-      isRedon = false;
-      isGreenon = false;
-      while (!check && flag == 4 && millis() - casespin  > casestime ) {
-
-        int y = analogRead(vrY);
-        if (y == 0 && millis() - timeforjoystick > joyRate) {
-
-          controljoystick();
-          flag = 5;
-          check = true;
-          currState = answer5;
+            Controlredled();
 
 
-        } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+          }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
 
-          controljoystick2();
-          flag = 3;
-          check = true;
-          currState = answer3;
+            Controlgreenled();
 
-        } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
-
-          Controlredled();
-
-
-        }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
-
-          Controlgreenled();
+          } else {
+            leaving();
+            
+          }
 
         }
+        break;
 
-      }
-      break;
-
-    case answer5:
-      Serial.println(" 5 ");
-      timeforjoystick = millis();
-      timeforjoystick2 = millis();
-      isRedon = false;
-      isGreenon = false;
-      while (check && flag == 5 && millis() - casespin  > casestime ) {
-
-        int y = analogRead(vrY);
-        if (y == 0 && millis() - timeforjoystick > joyRate) {
-
-          controljoystick();
-          flag = 1;
-          currState = answer1;
+      case answer4: Serial.println(" 4 ");
 
 
+        timeforjoystick = millis();
+        timeforjoystick2 = millis();
+        isRedon = false;
+        isGreenon = false;
 
-        } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+        while (!check && flag == 4 && millis() - casespin  > casestime ) {
 
-          controljoystick2();
-          flag = 4;
-          check = false;
-          currState = answer4;
+          int y = analogRead(vrY);
+          if (y == 0 && millis() - timeforjoystick > joyRate) {
 
-        } else  if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
+            controljoystick();
+            flag = 5;
+            check = true;
+            currState = answer5;
 
-          Controlredled();
+
+          } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+
+            controljoystick2();
+            flag = 3;
+            check = true;
+            currState = answer3;
+
+          } else if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
+
+            Controlredled();
 
 
-        }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
+          }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
 
-          Controlgreenled();
+            Controlgreenled();
+
+          } else {
+            leaving();
+            
+          }
 
         }
+        break;
 
-      }
-      break;
+      case answer5: Serial.println(" 5 ");
+
+        timeforjoystick = millis();
+        timeforjoystick2 = millis();
+        isRedon = false;
+        isGreenon = false;
+        while (check && flag == 5 && millis() - casespin  > casestime ) {
+
+          int y = analogRead(vrY);
+          if (y == 0 && millis() - timeforjoystick > joyRate) {
+
+            controljoystick();
+            flag = 1;
+            currState = answer1;
+
+
+
+          } else if (y == 1023 && millis() - timeforjoystick2 > joyRate) {
+
+            controljoystick2();
+            flag = 4;
+            check = false;
+            currState = answer4;
+
+          } else  if (digitalRead(redbtn) == LOW && millis() - redtimetopin > abletopressagain) {
+
+            Controlredled();
+
+
+          }  else if (digitalRead(greenbtn) == LOW && millis() - greentimetopin > abletopressagain) {
+
+            Controlgreenled();
+
+          } else {
+            leaving();
+
+          }
+
+        }
+        break;
+
+    }
+
 
   }
 }
+//--------------------------------------------------------------------------RESET MAINGAME SETTINGS
+void reset() {
+  flag = 1;
+  currState = answer1;
+  trigger = true;
+  check = true;
+}
+//--------------------------------------------------------------------------FOR EXITING THE ANSWERS
+void leaving() {
 
-//--------------------------------------------------------------------------DONE WITH PLAYING
+
+  if (millis() - timetostartgame > 60000) {
+    flag = 100;
+    currState = exitloop;
+    trigger = false;
+  }
+}
+//--------------------------------------------------------------------------TURN OFF LIGHTS WHEN LEAVING
 
 void LedOff() {
 
@@ -437,10 +485,8 @@ void LedOff() {
   digitalWrite(greenled, LOW);
   digitalWrite(blueled, LOW);
   digitalWrite(yellowled, LOW);
+  Serial.println("bye bye...");
+  delay(500);
 
 
 }
-
-
-
-
