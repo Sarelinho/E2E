@@ -31,7 +31,7 @@ const myPath = "";
 //const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
  
 const ing_dummy = new Dish("dummy", "");
-const ing_artichoke     = new Dish(myPath + "Artichoke.jpg", "ארטישוק");  // ארטישוק
+const ing_artichoke     = new Dish(`${myPath} + "Artichoke.jpg`, "ארטישוק");  // ארטישוק
 const ing_avocado       = myPath + "Avocado.jpg";  // אבוקדו
 const ing_baharat       = myPath + "Baharat.jpg";  // בהרט
 const ing_bakingpowder  = myPath + "BakingPowder.jpg";  // אבקת עפיה
