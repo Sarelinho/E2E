@@ -7,7 +7,7 @@ var myQuestions = [];
 var myIdx;        
 const answerTags = document.getElementsByClassName("btn_answer");
 
-
+var questions=["q1","q2","q3","q4","q5"];
 
 function startLevel1(){
     myRndInt = 0;
@@ -29,6 +29,7 @@ function startLevel1(){
     // Respond on player's choice:
     for (var i = 0; i < answerTags.length; i++) {
         answerTags[i].addEventListener("click", getAttempt);
+       
     }  
 }
 
@@ -39,16 +40,29 @@ function startLevel1(){
 //==============================================================
 
 function runQuest(v, idx) {
-
+    
+   
+    let s=questions[idx];
     if(myIdx >= numDishes){
-        alert("Gave over");
+        alert("Game over");
+        document.getElementById("level1").style.background = " #3f3f3f";
+        document.getElementById("lvl1").style.color = "#ffffff";
+      
+       
     } 
     else {
         // 1. Populate the images of the ingredients
 
         //Update the number of question:
-        document.getElementById("QuestNum").innerHTML =`שאלה ${idx+1}`;
-        
+       
+       
+
+
+       
+       
+
+        document.getElementById(s).style.background = "#d8d513";
+        document.getElementById(s).style.padding = "5px 32.2px";
         //Clear-up previous images if exist:
         removeAllChildNodes(document.querySelector('#images'));
 
@@ -58,6 +72,11 @@ function runQuest(v, idx) {
                 let myImg = document.createElement("img");
                 myImg.src = DishList[v][k];
                 document.getElementById("images").appendChild(myImg);
+             
+             
+                
+              
+            
             }   
         } 
         
@@ -73,6 +92,7 @@ function runQuest(v, idx) {
             document.getElementById(myAnswerButtons[i]).innerHTML = myOptions[i];
         }
     }
+    
 }
 
 
@@ -156,10 +176,22 @@ function removeAllChildNodes(parent) {
 }
 
 function getAttempt(){
+    
+   
+
     if(this.textContent == DishList[myQuestions[myIdx]].DishName){
         alert("Correct answer!");
+       
+        
+        
+        let s=questions[myIdx];
+        document.getElementById(s).style.color = "#ffffff";
+        document.getElementById(s).style.background = "#3f3f3f";
+        document.getElementById(s).style.padding = "5px 33.2px";
         myIdx++;
         runQuest(myQuestions[myIdx], myIdx);
+
+       
     }
     else {
         alert("Wrong answer. Try again.");
