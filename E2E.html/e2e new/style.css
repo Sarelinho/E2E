@@ -1,185 +1,211 @@
 *{
-    margin: 0;
-    padding: 0;
-    direction: rtl;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.message {
+  display: none;
+  z-index: 1;
+  font-weight: bolder;
+  font-size: 100px;
+  text-align: center;
+  opacity: 0.9;
+  padding-top: 80px;
+  margin: auto;
+  width: 91%;
+  top: 20px; bottom: 20px; left: 20px; right: 20px;
+  position: absolute;
+}
+
+#messageWrong {
+  background-color: rgb(87, 82, 82);
+  color: yellow;
+  border: black 5px solid;
+}
+
+#messageCorrect {
+  background-color: rgb(31, 236, 31);
+  color: rgb(30, 30, 155);
+  border: rgb(33, 117, 47) 5px solid;
 }
 
 #container{
-    height: 738px;
-    width: 98%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 0.5fr 3fr 0.5fr;
-    grid-gap: 3px;
-    grid-template-rows: 100px auto 100px;
-    border: black solid 3px;
+  height: 738px;
+  width: 98%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 0.5fr;
+  grid-gap: 3px;
+  grid-template-rows: 100px auto 100px;
+  border: black solid 3px;
 }
 
 header{
-    text-align: center;
-    color: white;
-    background-color:#595959;
-    grid-column: 1/4;
-    grid-row: 1/2 ;
+  text-align: center;
+  color: white;
+  background-color:#595959;
+  grid-column: 1/4;
+  grid-row: 1/2 ;
 }
 
 header h1{
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .box{
-    background-color: #4e72be;
+  background-color: #4e72be;
 }
 
 .box1{
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .box1  #Execution{
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .box1 #imgBitzoa{
-    width: 60%;
-    height: 20%;
-    margin-top: 20px;
+  width: 60%;
+  height: 20%;
+  margin-top: 20px;
 }
 
 .box1 #masov{
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .box1 #feedback{
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .box2{
-    text-align: center;
-    color: white;
-    position: relative;
+  text-align: center;
+  color: white;
+  position: relative;
 }
 
 .box2 #wellcome{
-    color: coral;
-    margin-top: 16px;
-    font-size: 40px;
+  color: coral;
+  margin-top: 16px;
+  font-size: 40px;
 }
 
 .box2 #well{
-    margin-top: 16px;
-    font-size: 20px;
+  margin-top: 16px;
+  font-size: 20px;
 }
 
 /*-------pageB1 Start--------*/
 .box2 #button{
-    border: black solid 1px;
-    display: block;
-    width: 16%;
-    padding: 10px 16px;
-    background-color: coral;
-    color: white;
-    border-radius: 6px;
-    font-size: 20px;
-    margin: 0 auto;
-    margin-top: 6%;
-      
+  border: black solid 1px;
+  display: block;
+  width: 16%;
+  padding: 10px 16px;
+  background-color: coral;
+  color: white;
+  border-radius: 6px;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 6%;
+    
 }
 
 .box2 h3{
-    width: 10%;
-    font-size: 20px;
-    padding: 10px 40px;
-    border: white solid 1px;
-    background-color: rgba(10, 10, 137, 0.5);
-    margin:20px auto;
+  width: 10%;
+  font-size: 20px;
+  padding: 10px 40px;
+  border: white solid 1px;
+  background-color: rgba(10, 10, 137, 0.5);
+  margin:20px auto;
 }
 
 .box2 #bottom{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 #bottom ul{
-    width: 20%;
-    height: 260px;
-    list-style: none;
+  width: 20%;
+  height: 260px;
+  list-style: none;
 }
 
 #bottom ul li{
-    background-color: rgb(213, 208, 46);;
-    color: rgb(42, 45, 58);
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: rgb(42, 45, 58) solid 2px;
+  background-color: rgb(213, 208, 46);;
+  color: rgb(42, 45, 58);
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: rgb(42, 45, 58) solid 2px;
 }
 
 #bottom #trueOrFalse{
-    width: 20%;
-    height: 250px;
+  width: 20%;
+  height: 250px;
 }
 
 #bottom #trueOrFalse #Instructions{
-    color: white;
-    font-size: 20px;
+  color: white;
+  font-size: 20px;
 }
 
 #bottom #trueOrFalse #pGreen{
-    color: white;
-    font-size: 20px;
-    background-color: rgb(52, 221, 52);
-    padding: 10px 20px;
-    border: black solid 2px;
-    border-radius: 10px 35px;
-    margin-top: 20px;
+  color: white;
+  font-size: 20px;
+  background-color: rgb(52, 221, 52);
+  padding: 10px 20px;
+  border: black solid 2px;
+  border-radius: 10px 35px;
+  margin-top: 20px;
 }
 
 #bottom #trueOrFalse #pRed{
-    color: white;
-    font-size: 20px;
-    background-color: red;
-    padding: 10px 20px;
-    border: black solid 2px;
-    border-radius: 10px 35px;
-    margin-top: 20px;
+  color: white;
+  font-size: 20px;
+  background-color: red;
+  padding: 10px 20px;
+  border: black solid 2px;
+  border-radius: 10px 35px;
+  margin-top: 20px;
 }
 
 .box2 #img
 {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 50px;
-    flex-direction: column;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  flex-direction: column;
 }
 
 .box2 #img > img{
-    width: 100%;
-    height: 260px;
+  width: 100%;
+  height: 260px;
 }
 
 .box2 #img  #H3{
-    width: 72%;
-    margin-right: 0;
-    margin-top: 0;
+  width: 72%;
+  margin-right: 0;
+  margin-top: 0;
 }
 /*-------pageB1 end--------*/
 
 /*-------pageA1 start--------*/
 .box2 #images
 {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 50px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50px;
 
 }
 .box2 #images > img
@@ -190,34 +216,34 @@ height: 130px;
 
 #answers
 {
-    display: flex;
-    text-align: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 20%;
-    align-items: center;
-    margin-top: 80px;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 20%;
+  align-items: center;
+  margin-top: 80px;
 }
 #answers div
 {
-    background-color:rgb(197, 197, 24,15);
-    color: darkblue;
-    align-items: center;
-    justify-content: center;
-    border: black 3px solid;
-    text-align: center;    
-    display: flex;
-    width: 20%;
-    height: 80px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    
+  background-color:rgb(197, 197, 24,15);
+  color: darkblue;
+  align-items: center;
+  justify-content: center;
+  border: black 3px solid;
+  text-align: center;    
+  display: flex;
+  width: 20%;
+  height: 80px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  
 }
 
 #answers :hover {
-    background-color: brown;
-    color: aliceblue;
+  background-color: brown;
+  color: aliceblue;
 }
 
 /*-------pageA1 end--------*/
@@ -226,92 +252,92 @@ height: 130px;
 /*--------pageC1 start----------*/
 
 .box2 #gamesM{
-    display: grid;
-    grid-template-columns:repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr) ;
-    width: 95%;
-    height: 80%;
-    margin: 20px auto;
-    grid-gap: 3px;
+  display: grid;
+  grid-template-columns:repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr) ;
+  width: 95%;
+  height: 80%;
+  margin: 20px auto;
+  grid-gap: 3px;
 }
 
 .box2 #gamesM > div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: #595959 solid 4px;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: #595959 solid 4px;
+  border-radius: 10px;
 }
 
 .box2 #gamesM img{
-    width: 200px;
-    height: 96px;
-    border-radius: 10px;
+  width: 200px;
+  height: 96px;
+  border-radius: 10px;
 }
 
 /*--------pageC1 end----------*/
 
 .box3{
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .box3 #moves{
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .box3 #level2 , #level1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: 40%;
-    margin-right: 3%;
-    list-style-type: none;
-    background-color: #92a8d7;
-    margin-top: 10px;
-    color: black;
-    padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 40%;
+  margin-right: 3%;
+  list-style-type: none;
+  background-color: #92a8d7;
+  margin-top: 10px;
+  color: black;
+  padding-top: 5px;
 }
 
 .box3 #lvl2 , #lvl1{
-    margin-bottom: 15px;
-    color: black;
+  margin-bottom: 15px;
+  color: black;
 }
 
 .box3  li{
-    width: 80%;
-    padding: 5px 1px;
-    background-color: #b3cd97;
-    border: black solid 1px;
-    border-radius: 4px;
-    margin-top: 3px;
+  width: 80%;
+  padding: 5px 1px;
+  background-color: #b3cd97;
+  border: black solid 1px;
+  border-radius: 4px;
+  margin-top: 3px;
 }
 
 .box3 #memoryGame{
-    padding: 5px 1px;
-    background-color: #92a8d7;
-    color: black;
-    width: 90%;
-    border-radius: 4px;
-    margin-top: 10px;
-    margin-right: 3%;
-    
+  padding: 5px 1px;
+  background-color: #92a8d7;
+  color: black;
+  width: 90%;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-right: 3%;
+  
 }
 
 footer{
-    background-color:#3f3f3f;
-    grid-column: 1/4;
-    grid-row: 3/4 ;
-    color: white;
+  background-color:#3f3f3f;
+  grid-column: 1/4;
+  grid-row: 3/4 ;
+  color: white;
 }
 
 footer #foot{
-    margin-top: 25px;
-    margin-right: 10px;
+  margin-top: 25px;
+  margin-right: 10px;
 }
 
 @media screen and (min-width: 1550px) {
-    #container {height: 960px;}
+  #container {height: 960px;}
 }
