@@ -1,5 +1,5 @@
 const myTitle = "חידון מאכלים";
-const mySubTitle = "תשפ\"ב, מכללת כנרת, פרויקט גמר בקורס E2E";
+const mySubTitle = "תשפ\"ב (2021-2022), מכללת כנרת, פרויקט גמר בקורס E2E";
 const myFooter = "בוצע ע\"י: <br>אזגורי ישי, אזולי שראל, גסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ\'רקסוב איתן"
 
 document.getElementById("headerText1").innerHTML = myTitle;
@@ -17,20 +17,12 @@ class Dish {
   }
 }
 
-class Ingred {
-  constructor(name, image) {
-    this.IngredName = name;
-    this.IngredImage = image;
-  }
-}
-
 //===============================================================================
 // List of Ingredients
 
 const myPath = "";
 //const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
  
-
 const ing_dummy = "dummy";
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
 const ing_avocado       = myPath + "Avocado.jpg";  // אבוקדו
@@ -119,6 +111,7 @@ const ing_vanillapudding = myPath + "Pudding.jpg"; // פודינג וניל
 const ing_vanillasugar  = myPath + "VanillaSugar.jpg";  // סוכר וניל
 const ing_wheat         = myPath + "Wheat.jpg";  // חיטה
 const ing_yeast         = myPath + "Yeast.jpg";  // שמרים
+
 
 //===============================================================================
 // List of Dishes
