@@ -7,6 +7,7 @@ var myCorrectAnswer;
 var myQuestions = [];    
 var myIdx;        
 const answerTags = document.getElementsByClassName("btn_answer");
+const myAnswerButtons = ["Ans_4", "Ans_3", "Ans_2", "Ans_1"]
 const myStageIndicators = ["q1", "q2", "q3", "q4", "q5"];
 const myMessageWrong = 'תשובה לא נכונה<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
 const myMessageCorrect1 = 'נכון מאוד!<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
@@ -43,44 +44,34 @@ function runQuest(v, idx) {
 
     const myStageIndicator = myStageIndicators[idx];
 
-    if(myIdx >= numQuests){
-        sendMessage("messageCorrect", myMessageCorrect2);
+    // 1. Populate the images of the ingredients
+    
+    //Change color theme of current stage in left panel:
+    document.getElementById(myStageIndicator).style.background = "#d8d513";
+    document.getElementById(myStageIndicator).style.padding = "5px 32.2px";
+    
+    //Clear-up previous images if exist:
+    removeAllChildNodes(document.querySelector('#images'));
 
-        //Change color theme of current stage in left panel (for the whole list of questions):
-        document.getElementById("level1").style.background = "#3f3f3f";
-        document.getElementById("lvl1").style.color = "#ffffff";
+    //Create HTML elements "img" acc amount of ingredients and append them into "images" div:
+    for (let k in DishList[v])  {
+        if(DishList[v][k].includes(myPath)) {
+            let myImg = document.createElement("img");
+            myImg.src = DishList[v][k];
+            document.getElementById("images").appendChild(myImg);
+        }   
     } 
-    else {
-        // 1. Populate the images of the ingredients
-        
-        //Change color theme of current stage in left panel:
-        document.getElementById(myStageIndicator).style.background = "#d8d513";
-        document.getElementById(myStageIndicator).style.padding = "5px 32.2px";
-        
-        //Clear-up previous images if exist:
-        removeAllChildNodes(document.querySelector('#images'));
+    
+    // 2. Answer options
 
-        //Create HTML elements "img" acc amount of ingredients and append them into "images" div:
-        for (let k in DishList[v])  {
-            if(DishList[v][k].includes(myPath)) {
-                let myImg = document.createElement("img");
-                myImg.src = DishList[v][k];
-                document.getElementById("images").appendChild(myImg);
-            }   
-        } 
-        
-        // 2. Answer options
+    // Create array of 4 Dish-Names (including the correct answer)
+    myCorrectAnswer = getRndInteger(0, 4); // Store random index 0 to 3 to be used for "correct answer"
+    var myOptions = randAnswers(v, myCorrectAnswer);
 
-        // Create array of 4 Dish-Names (including the correct answer)
-        myCorrectAnswer = getRndInteger(0, 4); // Store random index 0 to 3 to be used for "correct answer"
-        var myOptions = randAnswers(v, myCorrectAnswer);
-
-        // Populate the answer buttons 
-        // Order of items inside the array matters 
-        myAnswerButtons = ["Ans_4", "Ans_3", "Ans_2", "Ans_1"]
-        for (let i = 0; i < myAnswerButtons.length; i++){
-            document.getElementById(myAnswerButtons[i]).innerHTML = myOptions[i];
-        }
+    // Populate the answer buttons 
+    // Order of items inside the array matters 
+    for (let i = 0; i < myAnswerButtons.length; i++){
+        document.getElementById(myAnswerButtons[i]).innerHTML = myOptions[i];
     }
 }
 
@@ -165,10 +156,20 @@ function removeAllChildNodes(parent) {
 }
 
 function getAttempt(myInput) {
+
+    // Revert "myInput" (due to revert element order inside the div):
+    let tmpArr = [];
+    let len = myAnswerButtons.length;
+    for (let i = 0; i < myAnswerButtons.length; i++) {
+        tmpArr[i] = len-- - 1;
+    }
+    let myTmp = tmpArr[myInput];
+
+    // Retrieve content from the chosen answer:
+    myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
+    const myChoice = myChosenButton.textContent;
+    
     if (myInput == myCorrectAnswer) {
-        //Display a message:
-        sendMessage("messageCorrect", myMessageCorrect)
-        
         //Update Stage Indicator (left panel):
         const myStageIndicator = myStageIndicators[myIdx];
         const myStageIndicator_Style = document.getElementById(myStageIndicator).style
@@ -176,32 +177,48 @@ function getAttempt(myInput) {
         myStageIndicator_Style.color = "#ffffff";
         myStageIndicator_Style.background = "#3f3f3f";
         myStageIndicator_Style.padding = "5px 33.2px";
+        
+        if (myIdx >= numQuests - 1) {
+            displayMessage("messageCorrect", myMessageCorrect2, myChoice);
+        
+            //Change Stage Indicator (left panel) (for the whole list of questions):
+            document.getElementById("level1").style.background = "#3f3f3f";
+            document.getElementById("lvl1").style.color = "#ffffff";
+        }
+        else {
+            displayMessage("messageCorrect", myMessageCorrect1, myChoice)
 
-        //Advance to next stage:
-        myIdx++;
-        runQuest(myQuestions[myIdx], myIdx);
+            //Advance to next stage:
+            myIdx++;
+            runQuest(myQuestions[myIdx], myIdx);
+        }
     }
 
     else {
         //Display a message:
-        sendMessage("messageWrong", myMessageWrong)        
+        displayMessage("messageWrong", myMessageWrong, myChoice)        
     }
 }
 
-function sendMessage(myElementName, myContent){
+function displayMessage(myElementName, myContent, myChoice){
+    
+    // Unhide the Message div:
     let myMessageElement = document.getElementById(myElementName);
     myMessageElement.style.display = 'block';
-    myMessageElement.innerHTML = myContent;
+    myMessageElement.innerHTML = `-- ${myChoice} --<br><br>${myContent}`;
 
+    let myAnswerElement = document.getElementById("displayAnswer");
+    myAnswerElement.style.display = 'block';
+    myAnswerElement.innerHTML = myChoice;
+    
     setTimeout(function() {
         myMessageElement.style.display = 'none';
-    }, 2000);
+        myAnswerElement.style.display = 'none';
+    }, 3000);
     
     //TBD:
     // To close the message: wait for "z" key pressed (instead of timeout).
     // Remove EventListener from body
-    // Message div to contain:
-    // Box with chosen Dish-name (myQuestions[myIdx].DishName --> timeout of 1 sec --> message correct/wrong --> "To continue, remove the token from lazer path"
     // Add EventListener for Message div
     // On key-z pressed: 
     //    add EventListener back to body (or just move the existing addEventListener into runQuest function)
