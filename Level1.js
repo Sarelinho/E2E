@@ -196,4 +196,16 @@ function sendMessage(myElementName, myContent){
     setTimeout(function() {
         myMessageElement.style.display = 'none';
     }, 2000);
+    
+    //TBD:
+    // To close the message: wait for "z" key pressed (instead of timeout).
+    // Remove EventListener from body
+    // Message div to contain:
+    // Box with chosen Dish-name --> timeout of 1 sec --> message correct/wrong --> "To continue, remove the token from lazer path"
+    // Add EventListener for Message div
+    // On key-z pressed: 
+    //    add EventListener back to body (or just move the existing addEventListener into runQuest function)
+    //    remove EventListener from Message div
+    //    close the message (display = 'none')
+    // Need exclude "z" from getAttempt: else if (myInput == 25){ do nothing }
 }
