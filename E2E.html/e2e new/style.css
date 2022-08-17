@@ -10,10 +10,10 @@
   display: none;
   z-index: 1;
   font-weight: bolder;
-  font-size: 100px;
+  font-size: 50px;
   text-align: center;
   opacity: 0.9;
-  padding-top: 80px;
+  padding-top: 20px;
   margin: auto;
   width: 91%;
   top: 20px; bottom: 20px; left: 20px; right: 20px;
@@ -30,6 +30,24 @@
   background-color: rgb(31, 236, 31);
   color: rgb(30, 30, 155);
   border: rgb(33, 117, 47) 5px solid;
+}
+
+#displayAnswer {
+  display: none;
+  z-index: 2;
+  background-color: rgb(226, 223, 31);
+  border: solid 3px rgb(66, 70, 17);
+  color: rgb(32, 65, 94);
+  font-family: Calibri, sans-serif;
+  font-weight: bolder;
+  font-size: 60px;
+
+  text-align: center;
+  padding: 10px;
+  margin: auto;
+  width: 40%;
+  top: 30px; left: 40px; right: 40px;
+  position: absolute;
 }
 
 #container{
