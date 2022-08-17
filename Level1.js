@@ -8,8 +8,9 @@ var myQuestions = [];
 var myIdx;        
 const answerTags = document.getElementsByClassName("btn_answer");
 const myStageIndicators = ["q1", "q2", "q3", "q4", "q5"];
-const myMessageWrong = 'תשובה לא נכונה<br>נסו שוב';
-const myMessageCorrect = 'נכון מאוד!<br>ממשיכים...';
+const myMessageWrong = 'תשובה לא נכונה<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
+const myMessageCorrect1 = 'נכון מאוד!<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
+const myMessageCorrect2 = 'סיימת את השלב בהצלחה!<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
 
 
 
@@ -43,11 +44,10 @@ function runQuest(v, idx) {
     const myStageIndicator = myStageIndicators[idx];
 
     if(myIdx >= numQuests){
-        sendMessage("messageCorrect", "סיימת את השלב בהצלחה!")
+        sendMessage("messageCorrect", myMessageCorrect2);
 
-
-        // Support theme update in "התקדמות" panel (for the whole list of questions):
-        document.getElementById("level1").style.background = " #3f3f3f";
+        //Change color theme of current stage in left panel (for the whole list of questions):
+        document.getElementById("level1").style.background = "#3f3f3f";
         document.getElementById("lvl1").style.color = "#ffffff";
     } 
     else {
@@ -201,7 +201,7 @@ function sendMessage(myElementName, myContent){
     // To close the message: wait for "z" key pressed (instead of timeout).
     // Remove EventListener from body
     // Message div to contain:
-    // Box with chosen Dish-name --> timeout of 1 sec --> message correct/wrong --> "To continue, remove the token from lazer path"
+    // Box with chosen Dish-name (myQuestions[myIdx].DishName --> timeout of 1 sec --> message correct/wrong --> "To continue, remove the token from lazer path"
     // Add EventListener for Message div
     // On key-z pressed: 
     //    add EventListener back to body (or just move the existing addEventListener into runQuest function)
