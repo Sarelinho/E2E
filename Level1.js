@@ -5,7 +5,9 @@ var myRndInt;
 var myString;
 var myCorrectAnswer;
 var myQuestions = [];    
-var myIdx;        
+var myIdx;
+var isMessageTime = false;
+var isEndOfLevel = detectEndOfLevel();
 const answerTags = document.getElementsByClassName("btn_answer");
 const myAnswerButtons = ["Ans_4", "Ans_3", "Ans_2", "Ans_1"]
 const myStageIndicators = ["q1", "q2", "q3", "q4", "q5"];
@@ -155,6 +157,10 @@ function removeAllChildNodes(parent) {
     }
 }
 
+function detectEndOfLevel() {
+    if (myIdx >= numQuests - 1) isEndOfLevel = true;
+}
+
 function getAttempt(myInput) {
 
     // Revert "myInput" (due to revert element order inside the div):
@@ -169,7 +175,7 @@ function getAttempt(myInput) {
     myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
     const myChoice = myChosenButton.textContent;
     
-    if (myInput == myCorrectAnswer) {
+    if (myInput == myCorrectAnswer && !isMessageTime) {
         //Update Stage Indicator (left panel):
         const myStageIndicator = myStageIndicators[myIdx];
         const myStageIndicator_Style = document.getElementById(myStageIndicator).style
@@ -178,7 +184,7 @@ function getAttempt(myInput) {
         myStageIndicator_Style.background = "#3f3f3f";
         myStageIndicator_Style.padding = "5px 33.2px";
         
-        if (myIdx >= numQuests - 1) {
+        if (isEndOfLevel) {
             displayMessage("messageCorrect", myMessageCorrect2, myChoice);
         
             //Change Stage Indicator (left panel) (for the whole list of questions):
@@ -193,7 +199,10 @@ function getAttempt(myInput) {
             runQuest(myQuestions[myIdx], myIdx);
         }
     }
-
+    else if (myInput == 25 && isMessageTime) {
+        document.getElementsByClassName().style.display = 'none';
+        myAnswerElement.style.display = 'none';
+    }
     else {
         //Display a message:
         displayMessage("messageWrong", myMessageWrong, myChoice)        
@@ -202,10 +211,12 @@ function getAttempt(myInput) {
 
 function displayMessage(myElementName, myContent, myChoice){
     
+    isMessageTime = true;
+    
     // Unhide the Message div:
     let myMessageElement = document.getElementById(myElementName);
     myMessageElement.style.display = 'block';
-    myMessageElement.innerHTML = `-- ${myChoice} --<br><br>${myContent}`;
+    myMessageElement.innerHTML = `<br><br>${myContent}`;
 
     let myAnswerElement = document.getElementById("displayAnswer");
     myAnswerElement.style.display = 'block';
