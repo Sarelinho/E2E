@@ -10,6 +10,7 @@ var myQuestions = [];
 var myAnswerButtons = [];
 var myStageIndicators = [];
 var isMessageTime = false;
+var isCorrect;
 var isEndOfLevel = detectEndOfLevel();
 const answerTags = document.getElementsByClassName("btn_answer");
 const myMessageContinue = '<br><br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
@@ -50,11 +51,7 @@ function runQuest(v, idx) {
     const myStageIndicator = myStageIndicators[idx];
 
     // 1. Populate the images of the ingredients
-    
-    //Change color theme of current stage in left panel:
-    document.getElementById(myStageIndicator).style.background = "#d8d513";
-    document.getElementById(myStageIndicator).style.padding = "5px 32.2px";
-    
+  
     //Clear-up previous images if exist:
     removeAllChildNodes(document.querySelector('#images'));
 
@@ -138,44 +135,51 @@ function randAnswers (correctIndex, myRnd) {
 
 function getAttempt(myInput) {
 
-    // Revert "myInput" (due to revert element order inside the div):
-    let tmpArr = [];
-    let len = myAnswerButtons.length;
-    for (let i = 0; i < myAnswerButtons.length; i++) tmpArr[i] = len-- - 1;
-    let myTmp = tmpArr[myInput];
+    let myChoice = "";
 
-    // Retrieve content from the chosen answer:
-    myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
-    const myChoice = myChosenButton.textContent;
-    
+    if(myInput >= 0 && myInput < numOptions) {
+        // Revert "myInput" (due to revert element order inside the div):
+        let tmpArr = [];
+        let len = numOptions;
+        for (let i = 0; i < numOptions; i++) tmpArr[i] = len-- - 1;
+        let myTmp = tmpArr[myInput];
+
+        // Retrieve content from the chosen answer:
+        myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
+        myChoice = myChosenButton.textContent;
+    }
+
     // Respond on correct answer not during message display:
     if (myInput == myCorrectAnswer && !isMessageTime) {
-        if (isEndOfLevel) { displayMessage("messageCorrect", myMessageCorrect2, myChoice); }
-        else { displayMessage("messageCorrect", myMessageCorrect1, myChoice) }
+        if (detectEndOfLevel()) { displayMessage("messageCorrect", myMessageCorrect2, myChoice); }
+        else { displayMessage("messageCorrect", myMessageCorrect1, myChoice); }
+
+        isCorrect = true;
     }
     // Respond on "z" during message display:
-    else if (myInput == 25 && isMessageTime) {  
+    else if (myInput == 25 && isMessageTime) {          
         document.getElementById("displayAnswer").style.display = 'none';
         document.getElementById("messageWrong").style.display = 'none';
         document.getElementById("messageCorrect").style.display = 'none';
         
-        if (isEndOfLevel) {
-            //Change Stage Indicator (left panel) (for the whole list of questions):
-            document.getElementById("level1").style.background = "#3f3f3f";
-            document.getElementById("lvl1").style.color = "#ffffff";
+        if (isCorrect) {
+            updateIndicator(myIdx);
+            
+            if (detectEndOfLevel()) {
+                //Change Stage Indicator (left panel) (for the whole list of questions):
+                document.getElementById("level1").style.background = "#3f3f3f";
+                document.getElementById("lvl1").style.color = "#ffffff";
+            }
+            else {
+                //Advance to next stage:
+                myIdx++;
+                runQuest(myQuestions[myIdx], myIdx);
+            }
+
+            isCorrect = false;
         }
-        else {
-            //Update Stage Indicator (left panel):
-            const myStageIndicator = myStageIndicators[myIdx];
-            const myStageIndicator_Style = document.getElementById(myStageIndicator).style
-            myStageIndicator_Style.color = "#ffffff";
-            myStageIndicator_Style.background = "#3f3f3f";
-            myStageIndicator_Style.padding = "5px 33.2px";
-        
-            //Advance to next stage:
-            myIdx++;
-            runQuest(myQuestions[myIdx], myIdx);
-        }
+
+        isMessageTime = false;
     }
     // Any incorrect key (excluding "z") not during message display:
     else if (!(myInput == 25 && isMessageTime)) {  
@@ -196,8 +200,6 @@ function displayMessage(myElementName, myContent, myChoice) {
     myAnswerElement.style.display = 'block';
     myMessageElement.innerHTML = `<br><br>${myContent}`;
     myAnswerElement.innerHTML = myChoice;
-    
-    isMessageTime = false;
 }
 
 
@@ -224,5 +226,14 @@ function removeAllChildNodes(parent) {
 }
 
 function detectEndOfLevel() {
-    if (myIdx >= numQuests - 1) isEndOfLevel = true;
+    if (myIdx >= numQuests - 1)  return true; 
+    else return false; 
+}
+
+function updateIndicator(myIdx) {
+    const myStageIndicator = myStageIndicators[myIdx];
+    const myStageIndicator_Style = document.getElementById(myStageIndicator).style
+    myStageIndicator_Style.color = "#ffffff";
+    myStageIndicator_Style.background = "#3f3f3f";
+    myStageIndicator_Style.padding = "5px 33.2px";
 }
