@@ -1,21 +1,25 @@
 const numIngreds = 5;
 const numDishes = 5;
 const numQuests = 5;
+const numOptions = 4;
+var myIdx;
 var myRndInt;
 var myString;
 var myCorrectAnswer;
 var myQuestions = [];    
-var myIdx;
+var myAnswerButtons = [];
+var myStageIndicators = [];
 var isMessageTime = false;
 var isEndOfLevel = detectEndOfLevel();
 const answerTags = document.getElementsByClassName("btn_answer");
-const myAnswerButtons = ["Ans_4", "Ans_3", "Ans_2", "Ans_1"]
-const myStageIndicators = ["q1", "q2", "q3", "q4", "q5"];
-const myMessageWrong = 'תשובה לא נכונה<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
-const myMessageCorrect1 = 'נכון מאוד!<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
-const myMessageCorrect2 = 'סיימת את השלב בהצלחה!<br>כדי להמשיך, יש להוציא את הניצב מהמסלול';
+const myMessageContinue = '<br><br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
+const myMessageWrong = `תשובה לא נכונה${myMessageContinue}`;
+const myMessageCorrect1 = `נכון מאוד!${myMessageContinue}`;
+const myMessageCorrect2 = `סיימת את השלב בהצלחה!${myMessageContinue}`;
 
-
+for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `q${i+1}`; }
+for (let i = 0; i < numOptions; i++) { myAnswerButtons[i] = `Ans_${i+1}`; }
+myAnswerButtons.reverse();
 
 function startLevel1(){
     myRndInt = 0;
@@ -27,8 +31,7 @@ function startLevel1(){
     // Display question:
     runQuest(myQuestions[myIdx], myIdx);
 
-    // Once a button pressed, 
-    // convert its key value into a number ("97" is "a" in ASCII)
+    // Once a button pressed, convert its key value into a number ("97" is "a" in ASCII)
     // and run the function to handle user's repsonse:
     document.body.addEventListener("keypress", (e) => {
         const myPressedButton = e.key.charCodeAt(0) - 97;
@@ -133,6 +136,69 @@ function randAnswers (correctIndex, myRnd) {
     return myArray;
 }
 
+function getAttempt(myInput) {
+
+    // Revert "myInput" (due to revert element order inside the div):
+    let tmpArr = [];
+    let len = myAnswerButtons.length;
+    for (let i = 0; i < myAnswerButtons.length; i++) tmpArr[i] = len-- - 1;
+    let myTmp = tmpArr[myInput];
+
+    // Retrieve content from the chosen answer:
+    myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
+    const myChoice = myChosenButton.textContent;
+    
+    // Respond on correct answer not during message display:
+    if (myInput == myCorrectAnswer && !isMessageTime) {
+        if (isEndOfLevel) { displayMessage("messageCorrect", myMessageCorrect2, myChoice); }
+        else { displayMessage("messageCorrect", myMessageCorrect1, myChoice) }
+    }
+    // Respond on "z" during message display:
+    else if (myInput == 25 && isMessageTime) {  
+        document.getElementById("displayAnswer").style.display = 'none';
+        document.getElementById("messageWrong").style.display = 'none';
+        document.getElementById("messageCorrect").style.display = 'none';
+        
+        if (isEndOfLevel) {
+            //Change Stage Indicator (left panel) (for the whole list of questions):
+            document.getElementById("level1").style.background = "#3f3f3f";
+            document.getElementById("lvl1").style.color = "#ffffff";
+        }
+        else {
+            //Update Stage Indicator (left panel):
+            const myStageIndicator = myStageIndicators[myIdx];
+            const myStageIndicator_Style = document.getElementById(myStageIndicator).style
+            myStageIndicator_Style.color = "#ffffff";
+            myStageIndicator_Style.background = "#3f3f3f";
+            myStageIndicator_Style.padding = "5px 33.2px";
+        
+            //Advance to next stage:
+            myIdx++;
+            runQuest(myQuestions[myIdx], myIdx);
+        }
+    }
+    // Any incorrect key (excluding "z") not during message display:
+    else if (!(myInput == 25 && isMessageTime)) {  
+        displayMessage("messageWrong", myMessageWrong, myChoice)        
+    }
+    // Don't respond on nothing during the message display (except "z"):
+    else { /* do nothing */ }   
+}
+
+function displayMessage(myElementName, myContent, myChoice) {
+    
+    isMessageTime = true;
+    
+    // Unhide the Message divs:
+    let myMessageElement = document.getElementById(myElementName);
+    let myAnswerElement = document.getElementById("displayAnswer");
+    myMessageElement.style.display = 'block';
+    myAnswerElement.style.display = 'block';
+    myMessageElement.innerHTML = `<br><br>${myContent}`;
+    myAnswerElement.innerHTML = myChoice;
+    
+    isMessageTime = false;
+}
 
 
 //==============================================================
@@ -159,81 +225,4 @@ function removeAllChildNodes(parent) {
 
 function detectEndOfLevel() {
     if (myIdx >= numQuests - 1) isEndOfLevel = true;
-}
-
-function getAttempt(myInput) {
-
-    // Revert "myInput" (due to revert element order inside the div):
-    let tmpArr = [];
-    let len = myAnswerButtons.length;
-    for (let i = 0; i < myAnswerButtons.length; i++) {
-        tmpArr[i] = len-- - 1;
-    }
-    let myTmp = tmpArr[myInput];
-
-    // Retrieve content from the chosen answer:
-    myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
-    const myChoice = myChosenButton.textContent;
-    
-    if (myInput == myCorrectAnswer && !isMessageTime) {
-        //Update Stage Indicator (left panel):
-        const myStageIndicator = myStageIndicators[myIdx];
-        const myStageIndicator_Style = document.getElementById(myStageIndicator).style
-
-        myStageIndicator_Style.color = "#ffffff";
-        myStageIndicator_Style.background = "#3f3f3f";
-        myStageIndicator_Style.padding = "5px 33.2px";
-        
-        if (isEndOfLevel) {
-            displayMessage("messageCorrect", myMessageCorrect2, myChoice);
-        
-            //Change Stage Indicator (left panel) (for the whole list of questions):
-            document.getElementById("level1").style.background = "#3f3f3f";
-            document.getElementById("lvl1").style.color = "#ffffff";
-        }
-        else {
-            displayMessage("messageCorrect", myMessageCorrect1, myChoice)
-
-            //Advance to next stage:
-            myIdx++;
-            runQuest(myQuestions[myIdx], myIdx);
-        }
-    }
-    else if (myInput == 25 && isMessageTime) {
-        document.getElementsByClassName().style.display = 'none';
-        myAnswerElement.style.display = 'none';
-    }
-    else {
-        //Display a message:
-        displayMessage("messageWrong", myMessageWrong, myChoice)        
-    }
-}
-
-function displayMessage(myElementName, myContent, myChoice){
-    
-    isMessageTime = true;
-    
-    // Unhide the Message div:
-    let myMessageElement = document.getElementById(myElementName);
-    myMessageElement.style.display = 'block';
-    myMessageElement.innerHTML = `<br><br>${myContent}`;
-
-    let myAnswerElement = document.getElementById("displayAnswer");
-    myAnswerElement.style.display = 'block';
-    myAnswerElement.innerHTML = myChoice;
-    
-    setTimeout(function() {
-        myMessageElement.style.display = 'none';
-        myAnswerElement.style.display = 'none';
-    }, 3000);
-    
-    //TBD:
-    // To close the message: wait for "z" key pressed (instead of timeout).
-    // Remove EventListener from body
-    // Add EventListener for Message div
-    // On key-z pressed: 
-    //    add EventListener back to body (or just move the existing addEventListener into runQuest function)
-    //    remove EventListener from Message div
-    //    close the message (display = 'none')
-    // Need exclude "z" from getAttempt: else if (myInput == 25){ do nothing }
 }
