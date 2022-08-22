@@ -264,6 +264,15 @@ height: 130px;
   color: aliceblue;
 }
 
+#middlePane{
+  background-image:url(./2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#middlePane>h1{
+  color:black;
+}
 /*-------pageA1 end--------*/
 
 
