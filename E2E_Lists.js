@@ -27,8 +27,8 @@ class Dish {
 //===============================================================================
 // List of Ingredients
 
-//const myPath = "";
-const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
+const myPath = "";
+//const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
  
 const ing_dummy = "dummy";
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
