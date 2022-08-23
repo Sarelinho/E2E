@@ -171,9 +171,12 @@ var myIdx;
 
 function updateIndicator(myIdx) {
   const myStageIndicator = myStageIndicators[myIdx];
-  const myStageIndicator_Style = document.getElementById(myStageIndicator).style
-  myStageIndicator_Style.color = "#ffffff";
-  myStageIndicator_Style.background = "#3f3f3f";
-  myStageIndicator_Style.padding = "5px 33.2px";
+  const myStageIndicator_Style = document.getElementById(myStageIndicator)
+
+
+  myStageIndicator_Style.classList.remove("greenbox");
+  myStageIndicator_Style.classList.add("answer");
+  
+ 
 }
 
