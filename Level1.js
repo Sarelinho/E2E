@@ -2,7 +2,6 @@ const numIngreds = 5;
 const numDishes = 5;
 const numQuests = 5;
 const numOptions = 4;
-var myIdx;
 var myRndInt;
 var myString;
 var myCorrectAnswer;
@@ -228,12 +227,4 @@ function removeAllChildNodes(parent) {
 function detectEndOfLevel() {
     if (myIdx >= numQuests - 1)  return true; 
     else return false; 
-}
-
-function updateIndicator(myIdx) {
-    const myStageIndicator = myStageIndicators[myIdx];
-    const myStageIndicator_Style = document.getElementById(myStageIndicator).style
-    myStageIndicator_Style.color = "#ffffff";
-    myStageIndicator_Style.background = "#3f3f3f";
-    myStageIndicator_Style.padding = "5px 33.2px";
 }
