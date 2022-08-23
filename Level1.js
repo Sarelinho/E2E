@@ -31,12 +31,7 @@ function startLevel1(){
     // Display question:
     runQuest(myQuestions[myIdx], myIdx);
 
-    // Once a button pressed, convert its key value into a number ("97" is "a" in ASCII)
-    // and run the function to handle user's repsonse:
-    document.body.addEventListener("keypress", (e) => {
-        const myPressedButton = e.key.charCodeAt(0) - 97;
-        getAttempt(myPressedButton);
-    });
+    switchToKeyBoard();
 }
 
  
@@ -137,7 +132,7 @@ function getAttempt(myInput) {
     let myChoice = "";
 
     if(myInput >= 0 && myInput < numOptions) {
-        // Revert "myInput" (due to revert element order inside the div):
+        // Revert "myInput" (due to revert element order inside the div, because of RTL Direction):
         let tmpArr = [];
         let len = numOptions;
         for (let i = 0; i < numOptions; i++) tmpArr[i] = len-- - 1;
@@ -168,6 +163,9 @@ function getAttempt(myInput) {
                 //Change Stage Indicator (left panel) (for the whole list of questions):
                 document.getElementById("level1").style.background = "#3f3f3f";
                 document.getElementById("lvl1").style.color = "#ffffff";
+
+                //Close current page and open Level-2 page:
+                window.location.href = "./pageB1.html";
             }
             else {
                 //Advance to next stage:
@@ -206,10 +204,6 @@ function displayMessage(myElementName, myContent, myChoice) {
 // FUNCTIONS B
 //==============================================================
 
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
- 
 function myTest1(v) {
     return v == myRndInt;
 }
