@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div id="container">
+<body onload="startLevel2()">
+  <div id="container">
         <header> 
             <h1 id="headerText1"></h1>
             <p id="head"></p>
@@ -57,14 +57,16 @@
             <div id="messageWrong2" class="message"></div>
             <div id="messageCorrect2" class="message"></div>
             <div id="introduction2" class="message">
-              ברכות על הצלחתך בשלב א'<br>
-              בשלב הבא תוצג בכל שאלה תמונה של מאכל<br>
-              לצד רשימת מצרכים<br><br>
-              תבחרו מצרך בעזרת ג'ויסטיק<br>
-              סמנו כל מצרך בצבע ירוק (מתאים) או אדום (לא מתאים)<br>
-              המעבר לשאלה הבאה יתאפשר לאחר השלמת מיון המצרכים<br><br>
-              בהצלחה!<br><br>
-              להתחלה, לחצו על צבע ירוק
+              <p style="text-align: center; font-size: 40px; color: yellow">ברכות על הצלחתך בשלב א'</p><br>
+              <p style="text-align: center;"> 
+                בשלב הבא תוצג בכל שאלה תמונה של מאכל<br>
+                לצד רשימת מצרכים<br><br>
+                1. &nbsp;&nbsp; בחרו מצרך בעזרת ג'ויסטיק<br>
+                2. &nbsp;&nbsp;  סמנו את המצרך בצבע ירוק (מתאים) או אדום (לא מתאים)
+                <br><br><br>  
+                בהצלחה!<br><br>
+                להתחלה, לחצו על כפתור ירוק
+              </p>
             </div>
         </div>
 
@@ -73,20 +75,20 @@
 
             <ul id="level1" style="background: #3f3f3f; color: #ffffff">
                 <a href="pageA.html"><h2 id="lvl1" style="color: #ffffff">שלב א'</h2></a>
-                <li style="background: #3f3f3f"><b>שאלה 1</b></li>
-                <li style="background: #3f3f3f"><b>שאלה 2</b></li>
-                <li style="background: #3f3f3f"><b>שאלה 3</b></li>
-                <li style="background: #3f3f3f"><b>שאלה 4</b></li>
-                <li style="background: #3f3f3f"><b>שאלה 5</b></li>
+                <li class="answer" id="q1">שאלה 1</li>
+                <li class="answer" id="q2">שאלה 2</li>
+                <li class="answer" id="q3">שאלה 3</li>
+                <li class="answer" id="q4">שאלה 4</li>
+                <li class="answer" id="q5">שאלה 5</li>
             </ul>
 
             <ul id="level2">
                 <a href="pageB.html"><h2 id="lvl2">שלב ב'</h2></a>
-                <li><b>שאלה 1</b></li>
-                <li><b>שאלה 2</b></li>
-                <li><b>שאלה 3</b></li>
-                <li><b>שאלה 4</b></li>
-                <li><b>שאלה 5</b></li>
+                <li class="greenbox" id="q1">שאלה 1</li>
+                <li class="greenbox" id="q2">שאלה 2</li>
+                <li class="greenbox" id="q3">שאלה 3</li>
+                <li class="greenbox" id="q4">שאלה 4</li>
+                <li class="greenbox" id="q5">שאלה 5</li>
             </ul>
 
             <a href="pageC1.html"><p id="memoryGame"><b>משחק זיכרון</b></p></a>
@@ -98,6 +100,7 @@
     </div>
 
     <script src="E2E_Lists.js"></script>
+    <script src="Level2.js"></script>
 
-    </body>
+  </body>
 </html>
