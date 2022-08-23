@@ -27,8 +27,8 @@ class Dish {
 //===============================================================================
 // List of Ingredients
 
-const myPath = "";
-//const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
+//const myPath = "";
+const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
  
 const ing_dummy = "dummy";
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
@@ -54,11 +54,13 @@ const ing_chickenbreast = myPath + "ChickenBreast.jpg";  // חזה עוף
 const ing_chickensoup   = myPath + "ChickenSoup.jpg";  // מרק עוף
 const ing_chilesouce    = myPath + "Chile.jpg";  // רוטב צ'ילה
 const ing_chokolate     = myPath + "Chocolate.jpg";  // שוקולד
+const ing_cucumber      = myPath + "Cucumber.jpg";  // מלפוון
 const ing_coarsesalt    = myPath + "Salt.jpg";  // מלח גס
 const ing_corn          = myPath + "Corn.jpg";  // תירס
 const ing_cream         = myPath + "Cream.jpg";  // שמנת
 const ing_datehoney     = myPath + "DateHoney.jpg";  // סילן
 const ing_datespread    = myPath + "DateSpread.jpg";  // ממרח תמרים
+const ing_dill          = myPath + "Dill.jpg";  // שמיר
 const ing_dijonmustard  = myPath + "Dijon.jpg";  // חרדל דיז'ון
 const ing_eggplant      = myPath + "Eggplant.jpg";  // חציל
 const ing_eggs          = myPath + "Eggs.jpg";  // ביצים
@@ -118,6 +120,7 @@ const ing_vanillapudding = myPath + "Pudding.jpg"; // פודינג וניל
 const ing_vanillasugar  = myPath + "VanillaSugar.jpg";  // סוכר וניל
 const ing_wheat         = myPath + "Wheat.jpg";  // חיטה
 const ing_yeast         = myPath + "Yeast.jpg";  // שמרים
+const ing_yogurt        = myPath + "Yogurt.jpg";  // יוגורט
 
 
 //===============================================================================
@@ -162,7 +165,7 @@ var DishList = [
     new Dish("פיצה", ing_flour, ing_yeast, ing_tomatopaste, ing_cheese, ing_oliveoil),
     new Dish("שקשוקה", ing_tomato, ing_onion, ing_parsley, ing_eggs, ing_paprika),
     new Dish("שניצל", ing_eggs, ing_breadcrumbs, ing_chickenbreast, ing_sesame, ing_dijonmustard),
-    new Dish("מוקפץ", ing_noodles, ing_chickenbreast, ing_carrot, ing_onion, ing_gamba),
+    new Dish("ציזיקי", ing_yogurt, ing_oliveoil, ing_cucumber, ing_dill, ing_dummy),
     new Dish("מוקפץ תאילנדי", ing_chilesouce, ing_soysauce, ing_sesameoil, ing_chicken, ing_gamba),
     new Dish("מעורב ירושלמי", ing_spleen, ing_chickenbreast, ing_hawayeg, ing_turmeric, ing_onion)
 ];
@@ -171,12 +174,23 @@ var myIdx;
 
 function updateIndicator(myIdx) {
   const myStageIndicator = myStageIndicators[myIdx];
-  const myStageIndicator_Style = document.getElementById(myStageIndicator)
+  const myBox = document.getElementById(myStageIndicator);
 
-
-  myStageIndicator_Style.classList.remove("greenbox");
-  myStageIndicator_Style.classList.add("answer");
-  
- 
+  myBox.classList.remove("greenbox");
+  myBox.classList.add("answer");
 }
+
+function switchToKeyBoard() {
+  // Once a button pressed, convert its key value into a number ("97" is "a" in ASCII)
+  // and run the function to handle user's repsonse:
+  document.body.addEventListener("keypress", (e) => {
+    const myPressedButton = e.key.charCodeAt(0) - 97;
+    getAttempt(myPressedButton);
+  });
+}
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
 
