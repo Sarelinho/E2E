@@ -17,11 +17,18 @@ class Dish {
   }
 }
 
+// class Ingred {
+//   constructor(name, image) {
+//     this.IngredName = name;
+//     this.IngredImage = image;
+//   }
+// }
+
 //===============================================================================
 // List of Ingredients
 
-const myPath = "";
-//const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
+//const myPath = "";
+const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
  
 const ing_dummy = "dummy";
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
@@ -159,3 +166,14 @@ var DishList = [
     new Dish("מוקפץ תאילנדי", ing_chilesouce, ing_soysauce, ing_sesameoil, ing_chicken, ing_gamba),
     new Dish("מעורב ירושלמי", ing_spleen, ing_chickenbreast, ing_hawayeg, ing_turmeric, ing_onion)
 ];
+
+var myIdx;
+
+function updateIndicator(myIdx) {
+  const myStageIndicator = myStageIndicators[myIdx];
+  const myStageIndicator_Style = document.getElementById(myStageIndicator).style
+  myStageIndicator_Style.color = "#ffffff";
+  myStageIndicator_Style.background = "#3f3f3f";
+  myStageIndicator_Style.padding = "5px 33.2px";
+}
+
