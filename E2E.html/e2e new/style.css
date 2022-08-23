@@ -20,19 +20,19 @@
   position: absolute;
 }
 
-#messageWrong {
+#messageWrong, #messageWrong2 {
   background-color: rgb(87, 82, 82);
   color: yellow;
   border: black 5px solid;
 }
 
-#messageCorrect {
+#messageCorrect, #messageCorrect2 {
   background-color: rgb(31, 236, 31);
   color: rgb(30, 30, 155);
   border: rgb(33, 117, 47) 5px solid;
 }
 
-#displayAnswer {
+#displayAnswer, #displayAnswer2 {
   display: none;
   z-index: 2;
   background-color: rgb(226, 223, 31);
@@ -264,15 +264,13 @@ height: 130px;
   color: aliceblue;
 }
 
-#middlePane{
-  background-image:url(./2.jpg);
+#middlePane, #middlePane2{
+  background-image:url(./background_main.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  color: white;
 }
 
-#middlePane>h1{
-  color:black;
-}
 /*-------pageA1 end--------*/
 
 
