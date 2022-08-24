@@ -131,7 +131,7 @@ function respondOnKey(myInput) {
 
     let myChoice = "";
 
-    if(myInput >= 0 && myInput < numOptions) {
+    if((myInput >= 0 && myInput < numOptions) && !isMessageTime) {
         // Revert "myInput" (due to revert element order inside the div, because of RTL Direction):
         let tmpArr = [];
         let len = numOptions;
