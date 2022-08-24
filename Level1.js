@@ -21,6 +21,8 @@ for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `q${i+1}`; }
 for (let i = 0; i < numOptions; i++) { myAnswerButtons[i] = `Ans_${i+1}`; }
 myAnswerButtons.reverse();
 
+const myIntro = document.getElementById("introduction");
+
 function startLevel1(){
     myRndInt = 0;
     myString = "";
@@ -28,6 +30,9 @@ function startLevel1(){
     myIdx = 0;
     myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
     
+    // Display Introduction message:
+    displayIntro(myIntro);
+
     // Display question:
     runQuest(myQuestions[myIdx], myIdx);
 
@@ -150,7 +155,8 @@ function respondOnKey(myInput) {
 
         isCorrect = true;
     }
-    // Respond on "z" during message display:
+    
+    // Respond on "z" during Correc/Wrong Message display:
     else if (myInput == 25 && isMessageTime) {          
         document.getElementById("displayAnswer").style.display = 'none';
         document.getElementById("messageWrong").style.display = 'none';
@@ -178,11 +184,20 @@ function respondOnKey(myInput) {
 
         isMessageTime = false;
     }
+
+    // Respond on "z" during Introduction message display:
+    else if (isIntro && myInput == 25) {
+        // Hide Introduction message:
+        myIntro.style.display = 'none';
+        isIntro = false;
+    }
+    
     // Any incorrect key (excluding "z") not during message display:
     else if (!(myInput == 25 && isMessageTime)) {  
         displayMessage("messageWrong", myMessageWrong, myChoice)        
     }
-    // Don't respond on nothing during the message display (except "z"):
+    
+    // Don't respond on nothing during message display (except "z"):
     else { /* do nothing */ }   
 }
 
