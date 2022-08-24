@@ -181,6 +181,7 @@ var DishList = [
 ];
 
 var myIdx;
+var isIntro;
 
 function updateIndicator(myIdx) {
   const myStageIndicator = myStageIndicators[myIdx];
@@ -194,4 +195,13 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
+function displayIntro() {
+    isIntro = true;
+
+    myIntro.style.display = 'block';
+    myIntro.style.fontSize = '20px';
+    myIntro.style.backgroundColor = 'blue';
+    myIntro.style.border = 'lightblue 5px solid';
+    //myIntro.style.textAlign = 'right';
+}
 
