@@ -182,10 +182,6 @@ var DishList = [
 
 var myIdx;
 var isIntro;
-var batteryUpdate = 20;
-var batteryResult = 0;
-const batteryStyle = document.getElementById("charge").style;
-const batteryHeader = document.getElementById("Execution");
 
 function updateIndicator(myIdx) {
   const myStageIndicator = myStageIndicators[myIdx];
@@ -208,4 +204,25 @@ function displayIntro(myIntro) {
     myIntro.style.border = 'lightblue 5px solid';
 }
 
+//==================== Battery Update =============================================================
+
+var batteryUpdate = 20;
+var batteryResult = 0;
+const batteryStyle = document.getElementById("charge").style;
+const batteryHeader = document.getElementById("Execution");
+
+function changeBattery(myInput) {
+  batteryStyle.height = `${batteryResult += myInput}%`;
+
+  if      (batteryResult <= 20)                        batteryStyle.backgroundColor = "red";
+  else if (batteryResult > 20 && batteryResult <= 40) batteryStyle.backgroundColor = "orange";
+  else if (batteryResult > 40 && batteryResult <= 60) batteryStyle.backgroundColor = "yellow"; 
+  else if (batteryResult > 60 && batteryResult <= 80) batteryStyle.backgroundColor = "lightgreen"; 
+  else /*if (batteryResult > 80 && batteryResult <= 100)*/ batteryStyle.backgroundColor = "#00ff00";
+  if (batteryResult >= 100) document.getElementById("battery_head").style.backgroundColor = "#00ff00";
+
+
+  batteryHeader.innerHTML = `ביצוע: ${batteryResult}%`;
+}
+//==================== Battery Update  - end =======================================================
 
