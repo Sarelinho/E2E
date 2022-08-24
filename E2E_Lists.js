@@ -12,7 +12,7 @@ document.getElementById("foot").innerHTML = myFooter;
   // and run the function to handle user's repsonse:
   document.body.addEventListener("keypress", (e) => {
     const myPressedButton = e.key.charCodeAt(0) - 97;
-    getAttempt(myPressedButton);
+    respondOnKey(myPressedButton);
   });
 //}
 
