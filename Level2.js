@@ -2,7 +2,7 @@ var isIntro;
 const myIntro = document.getElementById("introduction2");
 
 function startLevel2(){
-    displayIntro();
+    displayIntro(myIntro);
 }
 
 function respondOnKey(myInput) {
