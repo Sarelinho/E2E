@@ -154,6 +154,9 @@ function respondOnKey(myInput) {
         else { displayMessage("messageCorrect", myMessageCorrect1, myChoice); }
 
         isCorrect = true;
+
+        changeBattery(batteryUpdate);
+        batteryUpdate = 20;
     }
     
     // Respond on "z" during Correc/Wrong Message display:
@@ -194,7 +197,8 @@ function respondOnKey(myInput) {
     
     // Any incorrect key (excluding "z") not during message display:
     else if (!(myInput == 25 && isMessageTime)) {  
-        displayMessage("messageWrong", myMessageWrong, myChoice)        
+        displayMessage("messageWrong", myMessageWrong, myChoice);
+        batteryUpdate = Math.max(0, batteryUpdate -= 5);
     }
     
     // Don't respond on nothing during message display (except "z"):
@@ -237,3 +241,85 @@ function detectEndOfLevel() {
     if (myIdx >= numQuests - 1)  return true; 
     else return false; 
 }
+
+
+
+///////////////////////////////////////////////////////
+
+
+
+
+var batteryInput = 0;
+var batteryChangeC = "green";
+
+function changeBattery(myInput) {
+    batteryStyle.height = `${batteryResult += myInput}%`;
+
+    if      (batteryResult < 25)                        batteryStyle.backgroundColor = "red";
+    else if (batteryResult >= 25 && batteryResult < 50) batteryStyle.backgroundColor = "orange";
+    else if (batteryResult >= 50 && batteryResult < 75) batteryStyle.backgroundColor = "yellow"; 
+    else                                                batteryStyle.backgroundColor = "#00ff00"; 
+
+    batteryHeader.innerHTML = `ביצוע: ${batteryResult}%`;
+}
+
+// function increaseBattery() {
+//     document.getElementById("charge").style.height = batteryResult + "%";
+//   }
+
+// function colorBattery(myColor) {
+//     document.getElementById("charge").style.backgroundColor = myColor;
+//   }
+
+
+// for (i=0; i<5; i++)
+// {
+
+    
+//      function fun() {  
+//         batteryInput = prompt("what item did you chose?");
+        
+//     }
+//     fun();
+
+//     var theItemTheyChose = batteryInput;
+//     var theCorrectItem = 2;
+//     if (theItemTheyChose != theCorrectItem)
+//         {
+//             batteryResult -= 5;
+
+//         }
+
+//     else if ( theItemTheyChose == theCorrectItem)
+//         {
+//             batteryResult += 20;
+//                 if (batteryResult >= 0)
+//                     {
+//                         increaseBattery();
+//                             if (batteryResult < 25)
+//                             {
+//                                 batteryChangeC = "red";
+//                                 colorBattery();
+//                             }
+//                             else  if (batteryResult > 24 && batteryResult < 50)
+//                             {
+//                                 batteryChangeC = "orange";
+//                                 colorBattery();
+//                             }
+//                             else if (batteryResult > 49 && batteryResult < 75)
+//                             {
+//                                 batteryChangeC = "yellow";
+//                                 colorBattery(); 
+//                             }
+//                             else if (batteryResult > 74)
+//                             {
+//                                 batteryChangeC = "#00ff00";
+//                                 colorBattery(); 
+//                             }
+                        
+//                         //console.log(result);
+//                     }
+//         }
+
+
+// }
