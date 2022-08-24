@@ -31,7 +31,7 @@ function startLevel1(){
     // Display question:
     runQuest(myQuestions[myIdx], myIdx);
 
-    switchToKeyBoard();
+    //switchToKeyBoard();
 }
 
  
@@ -127,7 +127,7 @@ function randAnswers (correctIndex, myRnd) {
     return myArray;
 }
 
-function getAttempt(myInput) {
+function respondOnKey(myInput) {
 
     let myChoice = "";
 
