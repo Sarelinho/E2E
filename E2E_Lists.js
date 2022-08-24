@@ -195,7 +195,7 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-function displayIntro() {
+function displayIntro(myIntro) {
     isIntro = true;
 
     myIntro.style.display = 'block';
