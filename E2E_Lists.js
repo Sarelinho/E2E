@@ -6,6 +6,16 @@ document.getElementById("headerText1").innerHTML = myTitle;
 document.getElementById("head").innerHTML = mySubTitle;
 document.getElementById("foot").innerHTML = myFooter;
 
+
+//function switchToKeyBoard() {
+  // Once a button pressed, convert its key value into a number ("97" is "a" in ASCII)
+  // and run the function to handle user's repsonse:
+  document.body.addEventListener("keypress", (e) => {
+    const myPressedButton = e.key.charCodeAt(0) - 97;
+    getAttempt(myPressedButton);
+  });
+//}
+
 class Dish {
   constructor(name, ingr1, ingr2, ingr3, ingr4, ingr5) {
       this.DishName = name;
@@ -178,15 +188,6 @@ function updateIndicator(myIdx) {
 
   myBox.classList.remove("greenbox");
   myBox.classList.add("answer");
-}
-
-function switchToKeyBoard() {
-  // Once a button pressed, convert its key value into a number ("97" is "a" in ASCII)
-  // and run the function to handle user's repsonse:
-  document.body.addEventListener("keypress", (e) => {
-    const myPressedButton = e.key.charCodeAt(0) - 97;
-    getAttempt(myPressedButton);
-  });
 }
 
 function getRndInteger(min, max) {
