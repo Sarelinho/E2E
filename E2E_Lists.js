@@ -182,6 +182,10 @@ var DishList = [
 
 var myIdx;
 var isIntro;
+var batteryUpdate = 20;
+var batteryResult = 0;
+const batteryStyle = document.getElementById("charge").style;
+const batteryHeader = document.getElementById("Execution");
 
 function updateIndicator(myIdx) {
   const myStageIndicator = myStageIndicators[myIdx];
@@ -202,6 +206,6 @@ function displayIntro(myIntro) {
     myIntro.style.fontSize = '20px';
     myIntro.style.backgroundColor = 'blue';
     myIntro.style.border = 'lightblue 5px solid';
-    //myIntro.style.textAlign = 'right';
 }
+
 
