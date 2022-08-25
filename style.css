@@ -199,7 +199,7 @@ header h1{
 }
 
 #middlePane, #middlePane2 {
-  background-image:url(./background_main.jpg);
+  background-image:url(./Images/background_main.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
