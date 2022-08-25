@@ -37,7 +37,7 @@ class Dish {
 //===============================================================================
 // List of Ingredients
 
-//const myPath = "";
+//const myPath = ".Images\\Ingreds\\";
 const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
  
 const ing_dummy = "dummy";
