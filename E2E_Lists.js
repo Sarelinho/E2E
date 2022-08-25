@@ -7,40 +7,42 @@ document.getElementById("head").innerHTML = mySubTitle;
 document.getElementById("foot").innerHTML = myFooter;
 
 
-//function switchToKeyBoard() {
   // Once a button pressed, convert its key value into a number ("97" is "a" in ASCII)
   // and run the function to handle user's repsonse:
   document.body.addEventListener("keypress", (e) => {
     const myPressedButton = e.key.charCodeAt(0) - 97;
     respondOnKey(myPressedButton);
   });
-//}
 
 class Dish {
-  constructor(name, ingr1, ingr2, ingr3, ingr4, ingr5) {
+  constructor(name, ingr1, ingr2, ingr3, ingr4, ingr5/*, arrWrong*/) {
       this.DishName = name;
       this.Ingredient1 = ingr1;
       this.Ingredient2 = ingr2;
       this.Ingredient3 = ingr3;
       this.Ingredient4 = ingr4;
       this.Ingredient5 = ingr5;
+      //this.WrongOptions = arrWrong;
   }
 }
 
-// class Ingred {
-//   constructor(name, image) {
-//     this.IngredName = name;
-//     this.IngredImage = image;
-//   }
-// }
+class Ingred {
+  constructor(name, image) {
+    this.IngredName = name;
+    this.IngredImage = image;
+  }
+}
 
 //===============================================================================
 // List of Ingredients
 
 //const myPath = "";
-const myPath = "C:\\Users\\Eitan\\Documents\\_Kinneret\\E2E\\Presentation_June\\Images\\";
+const myPath = ".Images\\Ingreds\\";
  
 const ing_dummy = "dummy";
+//const ing_artichoke     = new Ingred("ארטישוק", `${myPath}Artichoke.jpg`);
+//const ing_avocado       = new Ingred("אבוקדו", `${myPath}Avocado.jpg`);
+//const ing_baharat       = new Ingred("בהרט", `${myPath}Baharat.jpg`);
 const ing_artichoke     = myPath + "Artichoke.jpg";  // ארטישוק
 const ing_avocado       = myPath + "Avocado.jpg";  // אבוקדו
 const ing_baharat       = myPath + "Baharat.jpg";  // בהרט
@@ -138,6 +140,9 @@ const ing_yogurt        = myPath + "Yogurt.jpg";  // יוגורט
 
 
 var DishList = [
+    //new Dish("עראייס", ing_pita.image, ing_oliveoil.image, ing_meat.image, ing_parsley.image, ing_onion.image, ["ביצי תוקי", "כרוב אדום", "שמנת", "כוסמת", "תמרים"]),
+    //new Dish("ארטישוק ממולא", ing_artichoke.image, ing_datehoney.image, ing_garlic.image, ing_celery.image, ing_mince.image, ["שוקולד", "כרוב לבן", "יוגורט", "מוצרלה", "בצק עלים"]),
+    //new Dish("בורקס בשר", ing_phyllodough.image, ing_mince.image, ing_tomato.image, ing_baharat.image, ing_oliveoil.image, ["אבוקדו", "מושט", "חלב עזים", "שיבולת שועל", "פודינג וניל"]),
     new Dish("עראייס", ing_pita, ing_oliveoil, ing_meat, ing_parsley, ing_onion),
     new Dish("ארטישוק ממולא", ing_artichoke, ing_datehoney, ing_garlic, ing_celery, ing_mince),
     new Dish("בורקס בשר", ing_phyllodough, ing_mince, ing_tomato, ing_baharat, ing_oliveoil),
