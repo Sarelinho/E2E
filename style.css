@@ -198,7 +198,7 @@ header h1{
   color: aliceblue;
 }
 
-#middlePane, #middlePane2{
+#middlePane, #middlePane2 {
   background-image:url(./background_main.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -211,7 +211,7 @@ header h1{
 /*------- PageB1 Start --------*/
 
 
-.box2 #button{
+.box2 #button {
   border: black solid 1px;
   display: block;
   width: 16%;
@@ -222,10 +222,9 @@ header h1{
   font-size: 20px;
   margin: 0 auto;
   margin-top: 6%;
-    
 }
 
-.box2 h3{
+.box2 h3 {
   width: 10%;
   font-size: 20px;
   padding: 10px 40px;
@@ -234,38 +233,38 @@ header h1{
   margin:20px auto;
 }
 
-.box2 #bottom{
+.box2 #bottom {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
 
-#bottom ul{
+#bottom ul {
   width: 20%;
   height: 260px;
   list-style: none;
 }
 
-#bottom ul li{
-  background-color: rgb(213, 208, 46);;
+#bottom ul li {
+  background-color: rgb(213, 208, 46);
   color: rgb(42, 45, 58);
   padding: 5px 10px;
   border-radius: 10px;
   border: rgb(42, 45, 58) solid 2px;
 }
 
-#bottom #trueOrFalse{
+#bottom #trueOrFalse {
   width: 20%;
   height: 250px;
 }
 
-#bottom #trueOrFalse #Instructions{
+#bottom #trueOrFalse #Instructions {
   color: white;
   font-size: 20px;
 }
 
-#bottom #trueOrFalse #pGreen{
+#bottom #trueOrFalse #pGreen {
   color: white;
   font-size: 20px;
   background-color: rgb(52, 221, 52);
@@ -275,7 +274,7 @@ header h1{
   margin-top: 20px;
 }
 
-#bottom #trueOrFalse #pRed{
+#bottom #trueOrFalse #pRed {
   color: white;
   font-size: 20px;
   background-color: red;
@@ -285,8 +284,7 @@ header h1{
   margin-top: 20px;
 }
 
-.box2 #img
-{
+.box2 #img {
   width: 300px;
   height: 300px;
   display: flex;
@@ -296,12 +294,12 @@ header h1{
   flex-direction: column;
 }
 
-.box2 #img > img{
+.box2 #img > img {
   width: 100%;
   height: 260px;
 }
 
-.box2 #img  #H3{
+.box2 #img  #H3 {
   width: 72%;
   margin-right: 0;
   margin-top: 0;
@@ -311,7 +309,7 @@ header h1{
 
 /*--------pageC1 start----------*/
 
-.box2 #gamesM{
+.box2 #gamesM {
   display: grid;
   grid-template-columns:repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr) ;
@@ -321,7 +319,7 @@ header h1{
   grid-gap: 3px;
 }
 
-.box2 #gamesM > div{
+.box2 #gamesM > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -329,7 +327,7 @@ header h1{
   border-radius: 10px;
 }
 
-.box2 #gamesM img{
+.box2 #gamesM img {
   width: 200px;
   height: 96px;
   border-radius: 10px;
@@ -337,16 +335,16 @@ header h1{
 
 /*--------pageC1 end----------*/
 
-.box3{
+.box3 {
   color: white;
   text-align: center;
 }
 
-.box3 #moves{
+.box3 #moves {
   margin-top: 10px;
 }
 
-.box3 #level2 , #level1{
+.box3 #level2, #level1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -361,12 +359,12 @@ header h1{
   padding-top: 5px;
 }
 
-.box3 #lvl2 , #lvl1{
+.box3 #lvl2 , #lvl1 {
   margin-bottom: 15px;
   color: black;
 }
 
-.greenbox  {
+.greenbox {
   width: 80%;
   padding: 5px 1px;
   background-color: #b3cd97;
@@ -377,7 +375,7 @@ header h1{
 }
 
 
-.answer  {
+.answer {
   width: 80%;
   padding: 5px 1px;
   background-color: #3f3f3f;
@@ -388,7 +386,7 @@ header h1{
   font-weight: bold;
 }
 
-.box3 #memoryGame{
+.box3 #memoryGame {
   padding: 5px 1px;
   background-color: #92a8d7;
   color: black;
@@ -396,17 +394,16 @@ header h1{
   border-radius: 4px;
   margin-top: 10px;
   margin-right: 3%;
-  
 }
 
-footer{
+footer {
   background-color:#3f3f3f;
   grid-column: 1/4;
   grid-row: 3/4 ;
   color: white;
 }
 
-footer #foot{
+footer #foot {
   margin-top: 25px;
   margin-right: 10px;
 }
