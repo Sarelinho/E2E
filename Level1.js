@@ -113,6 +113,9 @@ function randAnswers (correctIndex, myRnd) {
     myArray[myRnd] = DishList[correctIndex].DishName;
 
     for (let i = 0; i < 4; i++) { 
+        let myInt=i+65;
+        let s = String.fromCharCode(myInt);
+
         if (i != myRnd) {
             myRndInt = getRndInteger(0, 40);
             myString = DishList[myRndInt].DishName;
@@ -123,7 +126,11 @@ function randAnswers (correctIndex, myRnd) {
                 myString = DishList[myRndInt].DishName;
                 isUsed = myArray.some(myTest2);
             }
-            myArray[i] = DishList[myRndInt].DishName;
+            myArray[i] =s+ `<br >${DishList[myRndInt].DishName}`;
+        }
+        else{
+            myArray[i] =s+ `<br >${DishList[correctIndex].DishName}`;
+
         }
     }
 
@@ -145,7 +152,7 @@ function respondOnKey(myInput) {
 
         // Retrieve content from the chosen answer:
         myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
-        myChoice = myChosenButton.textContent;
+        myChoice = myChosenButton.textContent.substring(1);
     }
 
     // Respond on correct answer not during message display:
