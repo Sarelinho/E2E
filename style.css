@@ -7,6 +7,13 @@
 
 }
 
+body, html {
+
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 
 .message {
   display: none;
@@ -53,7 +60,7 @@
 }
 
 #container{
-  height: 858px;
+  height: 100%;
   width: 98%;
   margin: auto;
   display: grid;
