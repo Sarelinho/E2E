@@ -4,7 +4,9 @@
   direction: rtl;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
+
 }
+
 
 .message {
   display: none;
@@ -303,6 +305,33 @@ header h1{
   width: 72%;
   margin-right: 0;
   margin-top: 0;
+}
+
+#levelB {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#B_header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+}
+
+#B_answer{
+  width: 40%;
+    height: 80%;
+    flex-direction: row;
+    background-color: #00ff00;
+}
+#B_image {
+  width: 60%;
+  height: 80%;
+  flex-direction: row;
+  background-color: blue;
 }
 /*-------pageB1 end--------*/
 
