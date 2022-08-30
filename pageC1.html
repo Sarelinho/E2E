@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body onload="startLevel1()">
+ <body>
     <div id="container">
         <header> 
             <h1 id="headerText1"></h1>
@@ -15,8 +15,11 @@
         </header>
 
         <div class="box box1">
-            <h2 id="Execution">ביצוע</h2>
-            <img id="imgBitzoa" src="images/diagramma.png.jpeg"/>
+            <h2 id="Execution">ביצוע</h2><br>
+            <div id="battery_head"></div>
+            <div class="battery_body">
+                <div id="charge"></div>
+            </div>
             
             <h2 id="masov">משוב</h2>
             <p id="feedback">הפגנת בקיאות רבה</p>
@@ -30,26 +33,7 @@
             </h1>
           
             <div id="gamesM">
-                <div id="card1"><img src="images/back_cards.jpg" /></div>
-                <div id="card2"><img src="images/back_cards.jpg" /></div>
-                <div id="card3"><img src="images/back_cards.jpg" /></div>
-                <div id="card4"><img src="images/back_cards.jpg" /></div>
-                <div id="card5"><img src="images/מנות/מוקפץ תאילנדי.jpeg" /></div>
-                <div id="card6"><img src="images/back_cards.jpg" /></div>
-                <div id="card7"><img src="images/back_cards.jpg" /></div>
-                <div id="card8"><img src="images/back_cards.jpg" /></div>
-                <div id="card9"><img src="images/back_cards.jpg" /></div>
-                <div id="card10"><img src="images/back_cards.jpg" /></div>
-                <div id="card11"><img src="images/back_cards.jpg" /></div>
-                <div id="card12"><img src="images/back_cards.jpg" /></div>
-                <div id="card13"><img src="images/back_cards.jpg" /></div>
-                <div id="card14"><img src="images/back_cards.jpg" /></div>
-                <div id="card15"><img src="images/back_cards.jpg" /></div>
-                <div id="card16"><img src="images/מנות/מוקפץ תאילנדי.jpeg" /></div>
-                <div id="card17"><img src="images/back_cards.jpg" /></div>
-                <div id="card18"><img src="images/back_cards.jpg" /></div>
-                <div id="card19"><img src="images/back_cards.jpg" /></div>
-                <div id="card20"><img src="images/back_cards.jpg" /></div>
+             
             </div>
             
         </div>
@@ -57,22 +41,22 @@
         <div class="box box3">
             <h2 id="moves">התקדמות:</h2>
 
-            <ul id="level1">
-                <a href="pageA1.html"><h2 id="lvl1">שלב א'</h2></a>
-                <li><b>שאלה 1</b></li>
-                <li><b>שאלה 2</b></li>
-                <li><b>שאלה 3</b></li>
-                <li><b>שאלה 4</b></li>
-                <li><b>שאלה 5</b></li>
+            <ul id="level1" style="background: #3f3f3f; color: #ffffff">
+                <a href="pageA1.html"><h2 id="lvl1" style="color: #ffffff">שלב א'</h2></a>
+                <li class="answer" id="q1">שאלה 1</li>
+                <li class="answer" id="q2">שאלה 2</li>
+                <li class="answer" id="q3">שאלה 3</li>
+                <li class="answer" id="q4">שאלה 4</li>
+                <li class="answer" id="q5">שאלה 5</li>
             </ul>
 
-            <ul id="level2">
-                <a href="pageB1.html"><h2 id="lvl2">שלב ב'</h2></a>
-                <li><b>שאלה 1</b></li>
-                <li><b>שאלה 2</b></li>
-                <li><b>שאלה 3</b></li>
-                <li><b>שאלה 4</b></li>
-                <li><b>שאלה 5</b></li>
+            <ul id="level2" style="background: #3f3f3f; color: #ffffff">
+                <a href="pageB1.html"><h2 id="lvl2" style="color: #ffffff">שלב ב'</h2></a>
+                <li class="answer" id="q1">שאלה 1</li>
+                <li class="answer" id="q2">שאלה 2</li>
+                <li class="answer" id="q3">שאלה 3</li>
+                <li class="answer" id="q4">שאלה 4</li>
+                <li class="answer" id="q5">שאלה 5</li>
             </ul>
 
             <a href="pageC1.html"><p id="memoryGame"><b>משחק זיכרון</b></p></a>
