@@ -6,7 +6,6 @@ var myArrCorrect = [];
 var myArrChecked = [];
 
 function startLevel2(){
-    myCorrectAnswer = 0;
     myIdx = 0;
     myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
 
