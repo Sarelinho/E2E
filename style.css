@@ -380,6 +380,10 @@ header {
 		border-radius: 10px;
 	}
 
+	.box2 #gamesM  #card0 {
+		border: hsl(120, 88%, 54%) solid 4px;
+	  }
+
 	.box2 #gamesM img {
 		width: 200px;
 		height: 96px;
