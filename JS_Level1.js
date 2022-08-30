@@ -83,6 +83,9 @@ function randAnswers (correctIndex, myRnd) {
     myArray[myRnd] = DishList[correctIndex].DishParams.imgName;
 
     for (let i = 0; i < 4; i++) { 
+        let myInt = i + 65;
+        let s = String.fromCharCode(myInt);
+
         if (i != myRnd) {
             myRndInt = getRndInteger(0, 40);
             myString = DishList[myRndInt].DishParams.imgName;
@@ -93,7 +96,10 @@ function randAnswers (correctIndex, myRnd) {
                 myString = DishList[myRndInt].DishParams.imgName;
                 isUsed = myArray.some(myTest2);
             }
-            myArray[i] = DishList[myRndInt].DishParams.imgName;
+            myArray[i] = s + `<br >${DishList[myRndInt].DishParams.imgName}`;
+        }
+        else {
+            myArray[i] = s + `<br >${DishList[correctIndex].DishParams.imgName}`;
         }
     }
 
