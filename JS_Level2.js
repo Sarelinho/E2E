@@ -6,14 +6,12 @@ var myArrCorrect = [];
 var myArrChecked = [];
 
 function startLevel2(){
-    myRndInt = 0;
-    myString = "";
     myCorrectAnswer = 0;
     myIdx = 0;
     myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
 
     // Display Introduction message:
-   // displayIntro(myIntro);
+    displayIntro(myIntro);
 
     // Display question:
     runQuest2(myQuestions[myIdx]);
@@ -54,14 +52,13 @@ function runQuest2(currIdx) {
         document.getElementById("B_answer").appendChild(myElement);
     }
 
-    // 3.3. Focus by default on the first option: TBD
+    // 3.3. Focus by default on the first option:
     setFocus(0);
 }
 
 function respondOnKey(myInput) {
     // Child-number of the Option focused before the move:
     const myCurrent = Array.from(myFocus.parentElement.children).indexOf(myFocus);
-
 
     if (isIntro) {
         if (isIntro && ((myInput == -32) || ((myInput == -29) || ((myInput == -10) || (myInput == -14))))) {
@@ -91,13 +88,12 @@ function respondOnKey(myInput) {
                     // Incorrect choice:
                     myFocus.style.backgroundColor = "red";
                     myFocus.style.color = "yellow";
-                    batteryUpdate = Math.max(0, batteryUpdate -= 5);
+                    batteryUpdate = Math.max(0, batteryUpdate -= 4);
                 }
                 myArrChecked.push(myCurrent);
 
                 // End of question:
                 if (myArrCorrect.length == 0) {
-                    alert("zzzz")
                     changeBattery(batteryUpdate);
                     batteryUpdate = 20;
 
@@ -118,15 +114,13 @@ function respondOnKey(myInput) {
                 break;
             case -10:
                 // "W" pressed (move up):
-                if ((myCurrent - 1) >= 0) {
+                if ((myCurrent - 1) >= 0)
                     toggleFocus(myCurrent, myCurrent - 1);
-                }
                 break;
             case -14:
                 // "S" pressed (move down):
-                if ((myCurrent + 1) < (myOptions.length)) {
+                if ((myCurrent + 1) < (myOptions.length))
                     toggleFocus(myCurrent, myCurrent + 1);
-                }
                 break;
         }
     }
