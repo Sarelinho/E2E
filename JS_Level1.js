@@ -3,8 +3,6 @@ var myRndInt;
 var myString;
 var myCorrectAnswer;
 var myAnswerButtons = [];
-var myStageIndicators = [];
-var isMessageTime = false;
 var isEndOfLevel = detectEndOfLevel();
 const answerTags = document.getElementsByClassName("btn_answer");
 const myMessageContinue = '<br><br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
@@ -12,7 +10,7 @@ const myMessageWrong = `תשובה לא נכונה${myMessageContinue}`;
 const myMessageCorrect1 = `נכון מאוד!${myMessageContinue}`;
 const myMessageCorrect2 = `סיימת את השלב בהצלחה!${myMessageContinue}`;
 
-for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `q${i+1}`; }
+for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `q${i + 1}`; }
 for (let i = 0; i < numOptions; i++) { myAnswerButtons[i] = `Ans_${i+1}`; }
 myAnswerButtons.reverse();
 
@@ -40,7 +38,6 @@ function startLevel1(){
 
 function runQuest(v, idx) {
 
-    const myStageIndicator = myStageIndicators[idx];
 
     // 1. Populate the images of the ingredients
   
@@ -121,7 +118,7 @@ function respondOnKey(myInput) {
 
         // Retrieve content from the chosen answer:
         myChosenButton = document.getElementById(`Ans_${myTmp + 1}`);
-        myChoice = myChosenButton.textContent;
+        myChoice = myChosenButton.textContent.substring(1);
     }
 
     // Respond on correct answer not during message display:

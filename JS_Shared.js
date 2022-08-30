@@ -3,8 +3,11 @@ const numDishes = 5;
 const numQuests = 5;
 const myTitle = "חידון מאכלים";
 const mySubTitle = "תשפ\"ב (2021-2022), מכללת כנרת, פרויקט גמר בקורס E2E";
-const myFooter = "בוצע ע\"י: <br>אזגורי ישי, אזולי שראל, גסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ\'רקסוב איתן"
+const myFooter = "בוצע ע\"י: <br>אזגורי ישי, אזולאי שראל, גסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ\'רקסוב איתן"
 var isCorrect;
+var isMessageTime = false;
+var myStageIndicators = [];
+
 
 document.getElementById("headerText1").innerHTML = myTitle;
 document.getElementById("head").innerHTML = mySubTitle;
@@ -252,11 +255,11 @@ function getDishes() {
     var myDishArray = [];
 
     for (let i = 0; i < numDishes; i++) {
-        myRndInt = getRndInteger(0, 40);
+        myRndInt = getRndInteger(0, DishList.length);
         let isUsed = myDishArray.some(myTest1);
 
         while (isUsed) {
-            myRndInt = getRndInteger(0, 40);
+            myRndInt = getRndInteger(0, DishList.length);
             isUsed = myDishArray.some(myTest1);
         }
         myDishArray[i] = myRndInt;

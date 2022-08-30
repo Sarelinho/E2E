@@ -5,6 +5,8 @@ var myFocus;
 var myArrCorrect = [];
 var myArrChecked = [];
 
+for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `qq${i + 1}`; }
+
 function startLevel2(){
     myIdx = 0;
     myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
@@ -66,7 +68,7 @@ function respondOnKey(myInput) {
             isIntro = false;
         }
     }
-    else {
+    else if (!isMessageTime) {
         switch (myInput) {
             case -32:
             case -29:
@@ -96,15 +98,24 @@ function respondOnKey(myInput) {
                     changeBattery(batteryUpdate);
                     batteryUpdate = 20;
 
+                    updateIndicator(myIdx);
+
                     if (detectEndOfLevel()) {
                         //Change Stage Indicator (left panel) (for the whole list of questions):
-                        document.getElementById("level1").style.background = "#3f3f3f";
-                        document.getElementById("lvl1").style.color = "#ffffff";
+                        document.getElementById("level2").style.background = "#3f3f3f";
+                        document.getElementById("lvl2").style.color = "#ffffff";
 
-                        //Close current page and open Level-2 page:
-                        window.location.href = "./pageC1.html";
+                        showMessage();
+
+                        setTimeout(function () {
+                            //Close current page and open Level-2 page:
+                            window.location.href = "./pageC1.html";
+                        }, 1900);
+                        
                     }
                     else {
+                        showMessage();
+
                         //Advance to next stage:
                         myIdx++;
                         runQuest2(myQuestions[myIdx]);
@@ -145,4 +156,12 @@ function removeFocus(myNum) {
 function toggleFocus(mySource, myTarget) {
     removeFocus(mySource);
     setFocus(myTarget);
+}
+
+function showMessage() {
+    document.getElementById("messageCorrect2").style.display = 'block';
+
+    setTimeout(function () {
+        document.getElementById("messageCorrect2").style.display = 'none';
+    }, 2000);
 }

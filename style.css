@@ -103,14 +103,6 @@ header {
 		margin-top: 20px;
 	}
 
-	.box1 #masov {
-		margin-top: 100px;
-	}
-
-	.box1 #feedback {
-		margin-top: 50px;
-	}
-
 .box2 {
 	text-align: center;
 	color: white;
@@ -142,7 +134,7 @@ header {
 
 .battery_body {
 	width: 100px;
-	height: 200px;
+	height: 70%;
 	background-color: rgba(54, 61, 54, 0.993);
 	position: relative;
 	margin: 0 auto;
@@ -326,7 +318,7 @@ header {
 	height: 20%;
 	display: flex;
 	flex-direction: row;
-	font-size: 30px;
+	font-size: 70px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -380,9 +372,9 @@ header {
 		border-radius: 10px;
 	}
 
-	.box2 #gamesM  #card0 {
+	.box2 #gamesM #card0 {
 		border: hsl(120, 88%, 54%) solid 4px;
-	  }
+	}
 
 	.box2 #gamesM img {
 		width: 200px;
