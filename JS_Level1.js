@@ -1,11 +1,7 @@
-const numIngreds = 5;
-const numDishes = 5;
-const numQuests = 5;
 const numOptions = 4;
 var myRndInt;
 var myString;
 var myCorrectAnswer;
-var myQuestions = [];    
 var myAnswerButtons = [];
 var myStageIndicators = [];
 var isMessageTime = false;
@@ -35,8 +31,6 @@ function startLevel1(){
 
     // Display question:
     runQuest(myQuestions[myIdx], myIdx);
-
-    //switchToKeyBoard();
 }
 
  
@@ -55,12 +49,11 @@ function runQuest(v, idx) {
     removeAllChildNodes(document.querySelector('#images'));
 
     //Create HTML elements "img" acc amount of ingredients and append them into "images" div:
-    for (let k in DishList[v])  {
-        if(DishList[v][k].includes(myPath)) {
-            let myImg = document.createElement("img");
-            myImg.src = DishList[v][k];
-            document.getElementById("images").appendChild(myImg);
-        }   
+	const myDish = DishList[v];
+    for (let k of myDish.Ingredients)  {        
+		let myImg = document.createElement("img");
+        myImg.src = k.imgPath;
+		document.getElementById("images").appendChild(myImg);
     } 
     
     // 2. Answer options
@@ -77,28 +70,6 @@ function runQuest(v, idx) {
 }
 
 
-function getDishes () {
-    // This function returns an array of 5 integers (indexes)
-    // taken randomly out of list of 40 Dishes.
-    // Each number can appear only once.
-
-    var  myDishArray = [];
-    
-    for (let i = 0; i < numDishes; i++){
-        myRndInt = getRndInteger(0, 40);
-        let isUsed = myDishArray.some(myTest1);
-
-        while (isUsed) {
-            myRndInt = getRndInteger(0, 40);
-            isUsed = myDishArray.some(myTest1);
-        }
-        myDishArray[i] = myRndInt;
-    }
-
-    myRndInt = 0;
-    return myDishArray;
-}
-
 
 function randAnswers (correctIndex, myRnd) {
     // - Create an array of 4 Dish-names.
@@ -110,20 +81,20 @@ function randAnswers (correctIndex, myRnd) {
 
     var myArray = [];
 
-    myArray[myRnd] = DishList[correctIndex].DishName;
+    myArray[myRnd] = DishList[correctIndex].DishParams.imgName;
 
     for (let i = 0; i < 4; i++) { 
         if (i != myRnd) {
             myRndInt = getRndInteger(0, 40);
-            myString = DishList[myRndInt].DishName;
+            myString = DishList[myRndInt].DishParams.imgName;
             isUsed = myArray.some(myTest2);
 
             while(isUsed || (myRndInt == myRnd)) {
                 myRndInt = getRndInteger(0, 40);
-                myString = DishList[myRndInt].DishName;
+                myString = DishList[myRndInt].DishParams.imgName;
                 isUsed = myArray.some(myTest2);
             }
-            myArray[i] = DishList[myRndInt].DishName;
+            myArray[i] = DishList[myRndInt].DishParams.imgName;
         }
     }
 
@@ -218,27 +189,4 @@ function displayMessage(myElementName, myContent, myChoice) {
     myAnswerElement.innerHTML = myChoice;
 }
 
-
-//==============================================================
-// FUNCTIONS B
-//==============================================================
-
-function myTest1(v) {
-    return v == myRndInt;
-}
- 
-function myTest2(v) {
-    return v == myString;
-}
-
-function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-}
-
-function detectEndOfLevel() {
-    if (myIdx >= numQuests - 1)  return true; 
-    else return false; 
-}
 
