@@ -337,15 +337,17 @@ header {
 	flex-direction: row;
 }
 
-#B_answer > div {
-	width: 80%;
-	height: 5%;
-	background-color: yellow;
-	color: saddlebrown;
-	font-size: large;
-	font-weight: bold;
-	margin: 5px;
-}
+	#B_answer > div {
+		width: 80%;
+		height: 5%;
+		background-color: yellow;
+		color: saddlebrown;
+		font-size: large;
+		font-weight: bold;
+		margin: 5px;
+		border: 2px solid gray;
+		border-radius: 5px;
+	}
 
 #B_image {
 	width: 60%;
