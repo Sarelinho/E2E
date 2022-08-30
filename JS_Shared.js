@@ -4,6 +4,7 @@ const numQuests = 5;
 const myTitle = "חידון מאכלים";
 const mySubTitle = "תשפ\"ב (2021-2022), מכללת כנרת, פרויקט גמר בקורס E2E";
 const myFooter = "בוצע ע\"י: <br>אזגורי ישי, אזולי שראל, גסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ\'רקסוב איתן"
+var isCorrect;
 
 document.getElementById("headerText1").innerHTML = myTitle;
 document.getElementById("head").innerHTML = mySubTitle;
@@ -180,7 +181,7 @@ class Dish {
 }
 
 var DishList = [
-    new Dish(dish_Alfredo,      [ing_spagetti, ing_cream, ing_garlicpowder, ing_parmesan, ing_onion],   ["תפוח", "מישמש", "חלב עזים", "בטטה", "חזה עוף"]),
+    new Dish(dish_Alfredo,      [ing_spagetti, ing_cream, ing_mushrooms, ing_parmesan, ing_onion],      ["תפוח", "מישמש", "חלב עזים", "בטטה", "חזה עוף"]),
     new Dish(dish_Arayes,       [ing_pita, ing_oliveoil, ing_meat, ing_parsley, ing_onion],             ["ביצי תוכי", "כרוב אדום", "שמנת", "כוסמת", "תמרים"]),
     new Dish(dish_Artichoke,    [ing_artichoke, ing_datehoney, ing_garlic, ing_celery, ing_mince],      ["שוקולד", "כרוב לבן", "יוגורט", "מוצרלה", "בצק עלים"]),
     new Dish(dish_Borsht,       [ing_potato, ing_cabbage, ing_beet, ing_meat, ing_carrot],              ["שוקולד", "ממרח תמרים", "קולה", "מוצרלה", " בורגול"]),

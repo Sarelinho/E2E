@@ -5,7 +5,6 @@ var myCorrectAnswer;
 var myAnswerButtons = [];
 var myStageIndicators = [];
 var isMessageTime = false;
-var isCorrect;
 var isEndOfLevel = detectEndOfLevel();
 const answerTags = document.getElementsByClassName("btn_answer");
 const myMessageContinue = '<br><br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
