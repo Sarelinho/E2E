@@ -1,9 +1,8 @@
 const numOptions = 4;
-var myRndInt;
-var myString;
-var myCorrectAnswer;
+var myRndInt = 0;
+var myString = "";
+var myCorrectAnswer = 0;
 var myAnswerButtons = [];
-var isEndOfLevel = detectEndOfLevel();
 const answerTags = document.getElementsByClassName("btn_answer");
 const myMessageContinue = '<br><br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
 const myMessageWrong = `תשובה לא נכונה${myMessageContinue}`;
@@ -14,14 +13,7 @@ for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `q${i + 1}`; }
 for (let i = 0; i < numOptions; i++) { myAnswerButtons[i] = `Ans_${i+1}`; }
 myAnswerButtons.reverse();
 
-const myIntro = document.getElementById("introduction");
-
 function startLevel1(){
-    myRndInt = 0;
-    myString = "";
-    myCorrectAnswer = 0;
-    myIdx = 0;
-    myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
     
     // Display Introduction message:
     displayIntro(myIntro);
@@ -33,7 +25,7 @@ function startLevel1(){
  
 
 //==============================================================
-// FUNCTIONS A
+// FUNCTIONS
 //==============================================================
 
 function runQuest(v, idx) {
@@ -186,6 +178,7 @@ function displayMessage(myElementName, myContent, myChoice) {
     let myMessageElement = document.getElementById(myElementName);
     let myAnswerElement = document.getElementById("displayAnswer");
     myMessageElement.style.display = 'block';
+    myMessageElement.style.backgroundImage = 'none';
     myAnswerElement.style.display = 'block';
     myMessageElement.innerHTML = `<br><br>${myContent}`;
     myAnswerElement.innerHTML = myChoice;

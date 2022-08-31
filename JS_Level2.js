@@ -1,4 +1,3 @@
-const myIntro = document.getElementById("introduction2");
 const myOptionsPan = document.getElementById("B_answer");
 var myOptions = myOptionsPan.children
 var myFocus;
@@ -8,8 +7,6 @@ var myArrChecked = [];
 for (let i = 0; i < numQuests; i++) { myStageIndicators[i] = `qq${i + 1}`; }
 
 function startLevel2(){
-    myIdx = 0;
-    myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
 
     // Display Introduction message:
     displayIntro(myIntro);
@@ -159,6 +156,7 @@ function toggleFocus(mySource, myTarget) {
 }
 
 function showMessage() {
+    document.getElementById("messageCorrect2").style.backgroundImage = 'none';
     document.getElementById("messageCorrect2").style.display = 'block';
 
     setTimeout(function () {

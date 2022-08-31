@@ -19,7 +19,7 @@ body, html {
 	font-weight: bolder;
 	font-size: 50px;
 	text-align: center;
-	opacity: 0.9;
+	opacity: 0.95;
 	padding-top: 20px;
 	margin: auto;
 	width: 91%;
@@ -28,6 +28,9 @@ body, html {
 	left: 20px;
 	right: 20px;
 	position: absolute;
+	background-image: url(./Images/message_background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #messageWrong, #messageWrong2 {
@@ -400,49 +403,48 @@ header {
 		justify-content: center;
 		width: 90%;
 		height: 40%;
-		margin-right: 3%;
+		margin: auto;
 		list-style-type: none;
 		background-color: #92a8d7;
 		margin-top: 10px;
 		color: black;
 		padding-top: 5px;
+		border-radius: 6px;
 	}
 
-	.box3 #lvl2, #lvl1 {
+	.box3 #lvl2, #lvl1, #memoryGame {
 		margin-bottom: 15px;
 		color: black;
+		font-size: larger;
+		font-weight: bold;
 	}
 
-.greenbox {
+.greenbox, .answer {
 	width: 80%;
-	padding: 5px 1px;
-	background-color: #b3cd97;
-	border: black solid 1px;
+	height: 10%;
+	padding: 5px;
 	border-radius: 4px;
 	margin-top: 3px;
 	font-weight: bold;
 }
 
+.greenbox {
+	background-color: #b3cd97;
+}
 
 .answer {
-	width: 80%;
-	padding: 5px 1px;
 	background-color: #3f3f3f;
-	border: black solid 1px;
-	border-radius: 4px;
-	margin-top: 3px;
-	color: white;
-	font-weight: bold;
+	border: gray solid 1px;
+	color: gray;
 }
 
 .box3 #memoryGame {
 	padding: 5px 1px;
-	background-color: #92a8d7;
-	color: black;
-	width: 90%;
+	width: 88%; height: 10%;
 	border-radius: 4px;
+	margin: auto;
 	margin-top: 10px;
-	margin-right: 3%;
+	background-color: #b3cd97;
 }
 
 footer {

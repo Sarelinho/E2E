@@ -3,10 +3,11 @@ const numDishes = 5;
 const numQuests = 5;
 const myTitle = "חידון מאכלים";
 const mySubTitle = "תשפ\"ב (2021-2022), מכללת כנרת, פרויקט גמר בקורס E2E";
-const myFooter = "בוצע ע\"י: <br>אזגורי ישי, אזולאי שראל, גסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ\'רקסוב איתן"
+const myFooter = "בוצע ע\"י: <br>אזגורי ישי, אזולאי שראל, גוסקובסקי גל, דגו יוסף, מראי שלמה, נחמני דניאל, ספורי נידאל, צ\'רקסוב איתן"
 var isCorrect;
 var isMessageTime = false;
 var myStageIndicators = [];
+const myIntro = document.getElementById("introduction");
 
 
 document.getElementById("headerText1").innerHTML = myTitle;
@@ -98,6 +99,7 @@ const ing_onion         = new imgQuestion(myPathIngr + "Onion.jpg",          "ב
 const ing_paprika       = new imgQuestion(myPathIngr + "Paprika.jpg",        "פפריקה")
 const ing_parmesan      = new imgQuestion(myPathIngr + "Parmesan.jpg",       "פרמזן")
 const ing_parsley       = new imgQuestion(myPathIngr + "Parsley.jpg",        "פטרוזיליה")
+const ing_pasta         = new imgQuestion(myPathIngr + "Pasta.jpg",          "פסטה")
 const ing_persianlemon  = new imgQuestion(myPathIngr + "PersianLemon.jpg",   "לימון פרסי")
 const ing_phyllodough   = new imgQuestion(myPathIngr + "Phyllo.jpg",         "בצק פילו")
 const ing_pistachio     = new imgQuestion(myPathIngr + "Pistaccio.jpg",      "פיסטוק")
@@ -184,15 +186,15 @@ class Dish {
 }
 
 var DishList = [
-    new Dish(dish_Alfredo,      [ing_spagetti, ing_cream, ing_mushrooms, ing_parmesan, ing_onion],      ["תפוח", "מישמש", "חלב עזים", "בטטה", "חזה עוף"]),
-    new Dish(dish_Arayes,       [ing_pita, ing_oliveoil, ing_meat, ing_parsley, ing_onion],             ["ביצי תוכי", "כרוב אדום", "שמנת", "כוסמת", "תמרים"]),
-    new Dish(dish_Artichoke,    [ing_artichoke, ing_datehoney, ing_garlic, ing_celery, ing_mince],      ["שוקולד", "כרוב לבן", "יוגורט", "מוצרלה", "בצק עלים"]),
+    new Dish(dish_Alfredo,      [ing_pasta, ing_cream, ing_mushrooms, ing_parmesan, ing_onion],         ["תפוח", "מישמש", "חלב עזים", "בטטה", "חזה עוף"]),
+    new Dish(dish_Arayes,       [ing_pita, ing_meat, ing_parsley, ing_onion],                           ["ביצי תוכי", "כרוב אדום", "שמנת", "כוסמת"]),
+    new Dish(dish_Artichoke,    [ing_artichoke, ing_datehoney, ing_celery, ing_mince],                  ["כרוב לבן", "יוגורט", "מוצרלה", "בצק עלים"]),
     new Dish(dish_Borsht,       [ing_potato, ing_cabbage, ing_beet, ing_meat, ing_carrot],              ["שוקולד", "ממרח תמרים", "קולה", "מוצרלה", " בורגול"]),
-    new Dish(dish_Burekas,      [ing_phyllodough, ing_mince, ing_tomato, ing_baharat, ing_oliveoil],    ["אבוקדו", "מושט", "חלב עזים", "שיבולת שועל", "פודינג וניל"]),
+    new Dish(dish_Burekas,      [ing_phyllodough, ing_mince, ing_tomato, ing_baharat],                  ["אבוקדו", "חלב עזים", "שיבולת שועל", "פודינג וניל"]),
     new Dish(dish_Caprese,      [ing_balsamic, ing_mozzarella, ing_basil, ing_tomato, ing_coarsesalt],  ["פתיתים", "במבה", "אבקת אפיה", "שוקולד", "קולה"]),
-    new Dish(dish_CheeseCake,   [ing_eggs, ing_flour, ing_fromageblanc, ing_vanillasugar, ing_vanillapudding], ["בשר טחון", "תפוח", "תפוח אדמה", "פסטה", "חזה עוף"]),
+    new Dish(dish_CheeseCake,   [ing_eggs, ing_flour, ing_fromageblanc, ing_vanillapudding],            ["תפוח", "תפוח אדמה", "פסטה", "חזה עוף"]),
     new Dish(dish_CornKish,     [ing_butter, ing_corn, ing_cheese, ing_flour, ing_cream],               ["אפרסק", "אבטיח", "מיונז", "שוקולד", "שמנת מתוקה"]),
-    new Dish(dish_DateCookies,  [ing_datespread, ing_flour, ing_eggs, ing_margarine, ing_bakingpowder], ["אבוקדו", "ממרח שוקולד", "פלאפל", "מישמש", "סלרי"]),
+    new Dish(dish_DateCookies,  [ing_datespread, ing_flour, ing_eggs, ing_bakingpowder],                ["אבוקדו", "ממרח שוקולד", "מישמש", "סלרי"]),
     new Dish(dish_Donut,        [ing_sugar, ing_flour, ing_jam, ing_sugarpowder, ing_oil],              ["אבוקדו", "חזה עוף", "בשר טחון", "עגבניה", "חציל"]),
     new Dish(dish_Falafel,      [ing_humus, ing_onion, ing_parsley, ing_garlic, ing_hotpepper],         ["במבה", "מושט", "חלב עזים", "תמרים", "פתיתים"]),
     new Dish(dish_FilledGamba,  [ing_rice, ing_gamba, ing_tomato, ing_meat, ing_onion],                 ["אבקת אפיה", "ביצים", "שוקולד", "תפוז", "מיונז"]),
@@ -200,13 +202,13 @@ var DishList = [
     new Dish(dish_FishBalls,    [ing_fish, ing_eggs, ing_onion, ing_tomatopaste, ing_semolina],         ["חמאת בוטנים", "גבינת עזים", "תפוח", "פטל", "חלב"]),
     new Dish(dish_GormeSabzi,   [ing_turmeric, ing_bean, ing_persianlemon, ing_onion, ing_parsley],     ["שמרים", "ממרח תמרים", "ערק", "קרם בורלה", "ביסלי"]),
     new Dish(dish_Guacamole,    [ing_avocado, ing_lemon, ing_garlic, ing_tomato, ing_oliveoil],         ["תפוח אדמה", "מושט", "חלב עזים", "שמנת", "פודינג וניל"]),
-    new Dish(dish_Holodets,     [ing_beefarm, ing_onion, ing_celery, ing_garlic, ing_carrot],           ["שמרים", "ממרח תמרים", "אבקת אפיה", "ענבים", "יוגורט"]),
+    new Dish(dish_Holodets,     [ing_beefarm, ing_onion, ing_celery, ing_carrot],                       ["ממרח תמרים", "אבקת אפיה", "ענבים", "יוגורט"]),
     new Dish(dish_Hrira,        [ing_meat, ing_lentils, ing_onion, ing_tomato, ing_celery],             ["פלאפל", "קבוקים", "שוקולד לבן", "תפוז", "חמאה"]),
     new Dish(dish_Injera,       [ing_taf, ing_siga, ing_potato, ing_chicken, ing_eggs],                 ["שזיף", "במבה", "חלב עזים", "מלפפון", "תפוח"]),
-    new Dish(dish_Jerusalem,    [ing_spleen, ing_chickenbreast, ing_hawayeg, ing_turmeric, ing_onion],  ["תפוח", "קרקר", "פודינג וניל", "חלב", "מלוואח"]),
+    new Dish(dish_Jerusalem,    [ing_spleen, ing_chickenbreast, ing_turmeric, ing_onion],               ["קרקר", "פודינג וניל", "חלב", "מלוואח"]),
     new Dish(dish_Khamin,       [ing_eggs, ing_wheat, ing_potato, ing_bean, ing_rice],                  ["שמרים", "אבקת אפיה", "חלב עזים", "פיתה", "שוקולד לבן"]),
     new Dish(dish_Knafe,        [ing_cheese, ing_kadaif, ing_rosewater, ing_sugarwater, ing_pistachio], ["דג", "גמבה", "חזה עוף", "מיונז", "עגבניה"]),
-    new Dish(dish_Kneidalach,   [ing_matzaflour, ing_eggs, ing_oil, ing_chickensoup],                  ["חציל", "בורי", "במבה", "מלון"]),
+    new Dish(dish_Kneidalach,   [ing_matzaflour, ing_eggs, ing_oil, ing_chickensoup],                   ["חציל", "בורי", "במבה", "מלון"]),
     new Dish(dish_Kuba,         [ing_beet, ing_semolina, ing_celery, ing_meat, ing_tomatopaste],        ["חלב", "מושט", "גבינת חלומי", "קרונפלקס", "פטל"]),
     new Dish(dish_Kuskus,       [ing_semolina, ing_pumpkin, ing_chicken, ing_carrot, ing_cabbage],      ["שמרים", "גבינה לבנה", "ריבת תות", "שזיף", "שוקולד"]),
     new Dish(dish_Mafrum,       [ing_burgul, ing_cauliflower, ing_onion, ing_mince, ing_parsley],       ["פסטה", "קורנפלקס", "תפוח", "פופקורן", "פטל"]),
@@ -216,19 +218,19 @@ var DishList = [
     new Dish(dish_Matbukha,     [ing_garlic, ing_hotpepper, ing_tomato, ing_oil, ing_tomatopaste],      ["מלפפון חמוץ", "תפוח אדמה", "אפרסק", "תפוז", "בצק עלים"]),
     new Dish(dish_Musaka,       [ing_eggplant, ing_onion, ing_tomato, ing_meat, ing_parsley],           ["מלפפון", "מושט", "גבינה לבנה", "שמנת מתוקה", "שיבולת שועל"]),
     new Dish(dish_Olivier,      [ing_potato, ing_carrot, ing_eggs, ing_chickenbreast, ing_mayonnaise],  ["קמח", "ריבת תות", "חלב ", "טחינה", "פלפל חריף"]),
-    new Dish(dish_OzneyAman,    [ing_yeast, ing_poppy, ing_chokolate, ing_flour, ing_butter],           ["בשר טחון", "כרוב לבן", "מיונז", "טחינה", "מלפפון"]),
+    new Dish(dish_OzneyAman,    [ing_yeast, ing_poppy, ing_flour, ing_butter],                          ["כרוב לבן", "מיונז", "טחינה", "מלפפון"]),
     new Dish(dish_Pancake,      [ing_eggs, ing_milk, ing_flour, ing_sugar, ing_maple],                  ["חסה", "בורי", "אנריקוט", "פטרוזיליה", "עגבניה"]),
-    new Dish(dish_Pizza,        [ing_flour, ing_yeast, ing_tomatopaste, ing_cheese, ing_oliveoil],      ["עוף", "דוריטוס", "ממרח תמרים", "בשר טחון", "חומוס"]),
+    new Dish(dish_Pizza,        [ing_flour, ing_yeast, ing_tomatopaste, ing_cheese],                    ["עוף", "דוריטוס", "ממרח תמרים", "חומוס"]),
     new Dish(dish_ScrambledEggs,[ing_eggs, ing_oliveoil, ing_onion, ing_parsley],                       ["קמח תופח", "פסטה", "דג", "שוקולד"]),
-    new Dish(dish_Schnitzel,    [ing_eggs, ing_breadcrumbs, ing_chickenbreast, ing_sesame, ing_dijonmustard], ["בשר טחון", "גבינה לבנה", "פסטה", "שיבולת שועל", "פודינג וניל"]),
+    new Dish(dish_Schnitzel,    [ing_eggs, ing_breadcrumbs, ing_chickenbreast, ing_sesame],             ["בשר טחון", "גבינה לבנה", "פסטה", "שיבולת שועל"]),
     new Dish(dish_Shakshuka,    [ing_tomato, ing_onion, ing_parsley, ing_eggs, ing_paprika],            ["שוקולד", "פתיתים", "אגס", "חלב עזים", "קוסקוס"]),
     new Dish(dish_Thailand,     [ing_chilesouce, ing_soysauce, ing_sesameoil, ing_chicken, ing_gamba],  ["שוקולד", "שמרים", "'קוטג", "דגני בוקר", "פלאפל"]),
     new Dish(dish_Tsiziki,      [ing_yogurt, ing_oliveoil, ing_cucumber, ing_dill],                     ["בוטנים", "מושט", "שוקולד", "שקדי מרק"])
 ];
 
-var myIdx;
+var myIdx = 0;
 var isIntro;
-var myQuestions = [];
+const myQuestions = getDishes();          // List of (indexes of) Dishes to be asked
 
 function updateIndicator(myIdx) {
   const myStageIndicator = myStageIndicators[myIdx];
@@ -280,11 +282,11 @@ const batteryHeader = document.getElementById("Execution");
 function changeBattery(myInput) {
   batteryStyle.height = `${batteryResult += myInput}%`;
 
-  if      (batteryResult <= 20)                        batteryStyle.backgroundColor = "red";
-  else if (batteryResult > 20 && batteryResult <= 40) batteryStyle.backgroundColor = "orange";
-  else if (batteryResult > 40 && batteryResult <= 60) batteryStyle.backgroundColor = "yellow"; 
-  else if (batteryResult > 60 && batteryResult <= 80) batteryStyle.backgroundColor = "lightgreen"; 
-  else /*if (batteryResult > 80 && batteryResult <= 100)*/ batteryStyle.backgroundColor = "#00ff00";
+  if      (batteryResult <= 20)                             batteryStyle.backgroundColor =  "red";
+  else if (batteryResult > 20 && batteryResult <= 40)       batteryStyle.backgroundColor =  "orange";
+  else if (batteryResult > 40 && batteryResult <= 60)       batteryStyle.backgroundColor =  "yellow"; 
+  else if (batteryResult > 60 && batteryResult <= 80)       batteryStyle.backgroundColor =  "lightgreen"; 
+  else /*if (batteryResult > 80 && batteryResult <= 100)*/  batteryStyle.backgroundColor =  "#00ff00";
   if (batteryResult >= 100) document.getElementById("battery_head").style.backgroundColor = "#00ff00";
 
 

@@ -15,57 +15,73 @@
         </header>
 
         <div class="box box1">
-            <h2 id="Execution">ביצוע</h2><br>
+            <h2 id="Execution">ביצוע</h2><br><br>
             <div id="battery_head"></div>
             <div class="battery_body">
                 <div id="charge"></div>
             </div>
-            
-            <h2 id="masov">משוב</h2>
-            <p id="feedback">הפגנת בקיאות רבה</p>
         </div>
 
         <div class="box box2">
-            <h1>שלב ג':
+            <h1>
+                שלב ג':
                 <br>
                 מצא זוגות של מאכלים
-                
             </h1>
-          
-            <div id="gamesM">
-             
+
+            <div id="gamesM"></div>
+
+            <div id="introduction" class="message">
+                <p style="text-align: center; font-size: 40px; color: yellow">ברוכים הבאים לשלב ג'</p><br>
+                <p style="text-align: center; background-color: black; padding: 30px; margin-left: 20%; margin-right: 20%; opacity: 0.9; border-radius: 30px;">
+                    בשלב זה יש למצוא זוגות של קלפים עם אותה תמונה<br>
+                    <br>
+                    עליכם להפוך כל פעם קלף אחד<br>
+                    ולמצוא את הקלף התואם לו<br><br>
+                    לאחר ניסיון כושל, שני הקלפים הפתוחים ייסגרו<br>
+                    לאחר ניסיון מוצלח, שני הקלפים יישארו פתוחים<br>
+                    המשחק ייגמר לאחר שכל הקלפים יהיו פתוחים<br><br>
+                    כדי לעבור בין הקלפים, יש להשתמש בג'ויסטיק'<br>
+                    כדי להפוך קלף שנבחר, יש ללחוץ על כפתור ירוק
+                    <br><br><br>
+                    בהצלחה!<br><br>
+                    להתחלה, הזיזו את הג'ויסטיק
+                </p>
             </div>
-            
+            <div id="gameover" class="message" style="text-align: center; font-size: 60px; color: yellow">
+                <h1>סוף המשחק</h1>
+                <a href="pageStart.html">להתחלת משחק חדש לחצו כאן</a>
+            </div>
         </div>
 
-        <div class="box box3">
-            <h2 id="moves">התקדמות:</h2>
+            <div class="box box3">
+                <h2 id="moves"></h2>
 
-            <ul id="level1" style="background: #3f3f3f; color: #ffffff">
-                <a href="pageA1.html"><h2 id="lvl1" style="color: #ffffff">שלב א'</h2></a>
-                <li class="answer" id="q1">שאלה 1</li>
-                <li class="answer" id="q2">שאלה 2</li>
-                <li class="answer" id="q3">שאלה 3</li>
-                <li class="answer" id="q4">שאלה 4</li>
-                <li class="answer" id="q5">שאלה 5</li>
-            </ul>
+                <ul id="level1" style="background: #3f3f3f; color: #ffffff">
+                    <a href="pageA1.html"><h2 id="lvl1" style="color: gray">שלב א'</h2></a>
+                    <li class="answer" id="q1">שאלה 1</li>
+                    <li class="answer" id="q2">שאלה 2</li>
+                    <li class="answer" id="q3">שאלה 3</li>
+                    <li class="answer" id="q4">שאלה 4</li>
+                    <li class="answer" id="q5">שאלה 5</li>
+                </ul>
 
-            <ul id="level2" style="background: #3f3f3f; color: #ffffff">
-                <a href="pageB1.html"><h2 id="lvl2" style="color: #ffffff">שלב ב'</h2></a>
-                <li class="answer" id="q1">שאלה 1</li>
-                <li class="answer" id="q2">שאלה 2</li>
-                <li class="answer" id="q3">שאלה 3</li>
-                <li class="answer" id="q4">שאלה 4</li>
-                <li class="answer" id="q5">שאלה 5</li>
-            </ul>
+                <ul id="level2" style="background: #3f3f3f; color: #ffffff">
+                    <a href="pageB1.html" id="lvl2" style="color: gray">שלב ב'</a>
+                    <li class="answer" id="qq1">שאלה 1</li>
+                    <li class="answer" id="qq2">שאלה 2</li>
+                    <li class="answer" id="qq3">שאלה 3</li>
+                    <li class="answer" id="qq4">שאלה 4</li>
+                    <li class="answer" id="qq5">שאלה 5</li>
+                </ul>
 
-            <a href="pageC1.html"><p id="memoryGame"><b>משחק זיכרון</b></p></a>
+                <a href="pageC1.html"><p id="memoryGame"><br>משחק זיכרון</p></a>
+            </div>
+
+            <footer>
+                <p id="foot"></p>
+            </footer>
         </div>
-
-        <footer>
-            <p id="foot"></p>
-        </footer>
-    </div>
 
     <script src="JS_Shared.js"></script>
     <script src="JS_Level3.js"></script>

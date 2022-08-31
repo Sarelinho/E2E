@@ -15,6 +15,9 @@ let backCard = "./images/back_cards.jpg";
 const games = [arayes, arayes, fish_and_chips, fish_and_chips, havitat_yerek, havitat_yerek, hrira, hrira, knafe,knafe, kuba_selek, kuba_selek, pankeik, pankeik, pizza, pizza, shnitzel, shnitzel, sir_dagim, sir_dagim];
 
 
+displayIntro(myIntro);
+
+//document.getElementById("memoryGame").style.backgroundColor = "#b3cd97";
 
 
 //----------help tools---------
@@ -51,8 +54,8 @@ function clicks(id){
         document.getElementById(id).src = games[id];
         ids.push(id);
         checkCards.push(games[id]);
-
-    }else if((checkCards.length == 1) && (ids[0] != id) && (cardsThatCameOutOfTheGame.indexOf(games[id]) < 0)){
+    }
+    else if ((checkCards.length == 1) && (ids[0] != id) && (cardsThatCameOutOfTheGame.indexOf(games[id]) < 0)) {
         document.getElementById(id).src = games[id];
         ids.push(id);
         checkCards.push(games[id]);
@@ -65,10 +68,11 @@ function clicks(id){
              ids = [];
              testCards = false;
              console.log(cardsThatCameOutOfTheGame);
-           }else{
+        }
+        else {
             setTimeout(back, 1000);
             testCards = false;
-           }
+        }
     }
 
 } 
@@ -107,24 +111,31 @@ function shuffle(array){
 
 function respondOnKey(myInput) {
     // Child-number of the Option focused before the move:
+    if (isIntro) {
+        if ((myInput == -32) || ((myInput == -29) || ((myInput == -10) || (myInput == -14)))) {
+            // When "A", "S", "D", "W" keys pressed during Intro display, hide Introduction message:
+            myIntro.style.display = 'none';
+            isIntro = false;
+        }
+    }
+    else {
         switch (myInput) {
             case -32:
-              //  console.log("A");
+                // "A" pressed (move left):
                 walked = myMoves;
                 myMoves++;
-                if(myMoves > 19){
+                if (myMoves > 19) {
 
                     myMoves = 0;
                 }
-                 toggleFocus(walked, myMoves);
+                toggleFocus(walked, myMoves);
                 break;
             case -29:
-              //  console.log("D");
-                // "A" or "D" pressed (move left or right):
+                // "D" pressed (move right):
                 walked = myMoves;
                 myMoves--;
-                if(myMoves < 0){
-                    
+                if (myMoves < 0) {
+
                     myMoves = 19;
                 }
                 toggleFocus(walked, myMoves);
@@ -133,27 +144,25 @@ function respondOnKey(myInput) {
                 // "W" pressed (move up):
                 walked = myMoves;
                 myMoves -= 5;
-                    if((myMoves >= -5) && (myMoves <= -1)){
-                         myMoves += 20;
-                    }
+                if ((myMoves >= -5) && (myMoves <= -1)) {
+                    myMoves += 20;
+                }
                 toggleFocus(walked, myMoves);
-               // console.log("W");
                 break;
             case -14:
                 // "S" pressed (move down):
                 walked = myMoves;
                 myMoves += 5;
-                if((myMoves > 19) && (myMoves < 29)){ 
+                if ((myMoves > 19) && (myMoves < 29)) {
                     myMoves -= 20;
                 }
-                toggleFocus(walked, myMoves); 
-               // console.log("S");
+                toggleFocus(walked, myMoves);
                 break;
-                case -26:
-                   // console.log("G");
-                    clicks(myMoves);
-                    break;
-        
+            case -26:
+                // "G" pressed (green button):
+                clicks(myMoves);
+                break;
+        }
     }
 }
 
