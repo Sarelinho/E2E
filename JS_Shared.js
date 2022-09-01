@@ -36,7 +36,6 @@ class imgQuestion {
 
 const myPathIngr = "./Images/Ingreds/";
 
-//const ing_dummy = "dummy";
 const ing_artichoke     = new imgQuestion(myPathIngr + "Artichoke.jpg",      "ארטישוק")
 const ing_avocado       = new imgQuestion(myPathIngr + "Avocado.jpg",        "אבוקדו")
 const ing_baharat       = new imgQuestion(myPathIngr + "Baharat.jpg",        "בהרט")
@@ -198,9 +197,9 @@ var DishList = [
     new Dish(dish_Donut,        [ing_sugar, ing_flour, ing_jam, ing_sugarpowder, ing_oil],              ["אבוקדו", "חזה עוף", "בשר טחון", "עגבניה", "חציל"]),
     new Dish(dish_Falafel,      [ing_humus, ing_onion, ing_parsley, ing_garlic, ing_hotpepper],         ["במבה", "מושט", "חלב עזים", "תמרים", "פתיתים"]),
     new Dish(dish_FilledGamba,  [ing_rice, ing_gamba, ing_tomato, ing_meat, ing_onion],                 ["אבקת אפיה", "ביצים", "שוקולד", "תפוז", "מיונז"]),
-    new Dish(dish_Fish_and_chips, [ing_fish, ing_beer, ing_potato, ing_oil, ing_flour],                 ["גבינה לבנה", "בשר טחון", "שזיף", "קרונפלקס", "מיונז"]),
+    new Dish(dish_Fish_and_chips, [ing_fish, ing_beer, ing_potato, ing_oil, ing_flour],                 ["גבינה לבנה", "בשר טחון", "שזיף", "קורנפלקס", "מיונז"]),
     new Dish(dish_FishBalls,    [ing_fish, ing_eggs, ing_onion, ing_tomatopaste, ing_semolina],         ["חמאת בוטנים", "גבינת עזים", "תפוח", "פטל", "חלב"]),
-    new Dish(dish_GormeSabzi,   [ing_turmeric, ing_bean, ing_persianlemon, ing_onion, ing_parsley],     ["שמרים", "ממרח תמרים", "ערק", "קרם בורלה", "ביסלי"]),
+    new Dish(dish_GormeSabzi,   [ing_turmeric, ing_bean, ing_persianlemon, ing_onion, ing_parsley],     ["שמרים", "ממרח תמרים", "ערק", "רוטב סויה", "ביסלי"]),
     new Dish(dish_Guacamole,    [ing_avocado, ing_lemon, ing_garlic, ing_tomato, ing_oliveoil],         ["תפוח אדמה", "מושט", "חלב עזים", "שמנת", "פודינג וניל"]),
     new Dish(dish_Holodets,     [ing_beefarm, ing_onion, ing_celery, ing_carrot],                       ["ממרח תמרים", "אבקת אפיה", "ענבים", "יוגורט"]),
     new Dish(dish_Hrira,        [ing_meat, ing_lentils, ing_onion, ing_tomato, ing_celery],             ["פלאפל", "קבוקים", "שוקולד לבן", "תפוז", "חמאה"]),
@@ -209,7 +208,7 @@ var DishList = [
     new Dish(dish_Khamin,       [ing_eggs, ing_wheat, ing_potato, ing_bean, ing_rice],                  ["שמרים", "אבקת אפיה", "חלב עזים", "פיתה", "שוקולד לבן"]),
     new Dish(dish_Knafe,        [ing_cheese, ing_kadaif, ing_rosewater, ing_sugarwater, ing_pistachio], ["דג", "גמבה", "חזה עוף", "מיונז", "עגבניה"]),
     new Dish(dish_Kneidalach,   [ing_matzaflour, ing_eggs, ing_oil, ing_chickensoup],                   ["חציל", "בורי", "במבה", "מלון"]),
-    new Dish(dish_Kuba,         [ing_beet, ing_semolina, ing_celery, ing_meat, ing_tomatopaste],        ["חלב", "מושט", "גבינת חלומי", "קרונפלקס", "פטל"]),
+    new Dish(dish_Kuba,         [ing_beet, ing_semolina, ing_celery, ing_meat, ing_tomatopaste],        ["חלב", "מושט", "גבינת חלומי", "קורנפלקס", "פטל"]),
     new Dish(dish_Kuskus,       [ing_semolina, ing_pumpkin, ing_chicken, ing_carrot, ing_cabbage],      ["שמרים", "גבינה לבנה", "ריבת תות", "שזיף", "שוקולד"]),
     new Dish(dish_Mafrum,       [ing_burgul, ing_cauliflower, ing_onion, ing_mince, ing_parsley],       ["פסטה", "קורנפלקס", "תפוח", "פופקורן", "פטל"]),
     new Dish(dish_Majadra,      [ing_rice, ing_onion, ing_lentils],                                     ["לחם", "חלב ", "קמח"]),
@@ -293,13 +292,6 @@ function changeBattery(myInput) {
   batteryHeader.innerHTML = `ביצוע: ${batteryResult}%`;
 }
 //==================== Battery Update  - end =======================================================
-
-
-
-
-//==============================================================
-// FUNCTIONS B
-//==============================================================
 
 function myTest1(v) {
     return v == myRndInt;
