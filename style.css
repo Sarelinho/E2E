@@ -299,7 +299,7 @@ header {
 	width: 50%; height: 77%;
 	flex-direction: row;
 	background-size: 100% 100%; background-repeat: no-repeat;
-	left: 20px;
+	border: solid 3px black; border-radius: 5px;
 }
 /*-------page B1 end--------*/
 
