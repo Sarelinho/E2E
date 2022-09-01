@@ -101,7 +101,7 @@ header {
 	}
 
 	.box1 #imgBitzoa {
-		width: 60%;
+		width: 50%;
 		height: 20%;
 		margin-top: 20px;
 	}
@@ -110,6 +110,7 @@ header {
 	text-align: center;
 	color: white;
 	position: relative;
+	
 }
 
 	.box2 #wellcome {
@@ -134,7 +135,13 @@ header {
 	border-top-left-radius: 8px;
 	position: relative;
 }
-
+#introduction{
+	
+	width: 98%;
+	height: 96%;
+	
+	
+}
 .battery_body {
 	width: 100px;
 	height: 70%;
@@ -153,6 +160,7 @@ header {
 	height: 0%;
 	background-color: #00ff00;
 }
+
 
 
 /*------- PageA1 start --------*/
@@ -380,8 +388,8 @@ header {
 	}
 
 	.box2 #gamesM img {
-		width: 200px;
-		height: 96px;
+		width: 229px;
+		height: 155px;
 		border-radius: 10px;
 	}
 
