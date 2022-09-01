@@ -274,30 +274,32 @@ header {
 }
 
 #B_header {
-	width: 100%; height: 20%;
-	display: flex; flex-direction: row;
+	display: block;
 	font-size: 70px; font-weight: bold;
+	width: 100%; height: 20%;
+	margin: 0 auto;
 	text-align: center;
 }
 
 #B_answer {
-	width: 40%; height: 80%;
+	width: 48%; height: 80%;
 	flex-direction: row;
 }
 
 	#B_answer > div {
-		width: 80%; height: 5%;
+		width: 60%; height: 7%;
 		background-color: yellow;
 		color: saddlebrown;
 		font-size: large; font-weight: bold;
-		margin: 5px;
+		margin: 5px auto;
 		border: 2px solid gray; border-radius: 5px;
 	}
 
 #B_image {
-	width: 60%; height: 80%;
+	width: 50%; height: 77%;
 	flex-direction: row;
-	background-repeat: no-repeat; background-size: cover; background-position: center;
+	background-size: 100% 100%; background-repeat: no-repeat;
+	left: 20px;
 }
 /*-------page B1 end--------*/
 
