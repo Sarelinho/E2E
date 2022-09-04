@@ -4,7 +4,7 @@ var myString = "";
 var myCorrectAnswer = 0;
 var myAnswerButtons = [];
 const answerTags = document.getElementsByClassName("btn_answer");
-const myMessageContinue = '<br><br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
+const myMessageContinue = '<br><i>כדי להמשיך, יש להוציא את הניצב מהמסלול</i>';
 const myMessageWrong = `תשובה לא נכונה${myMessageContinue}`;
 const myMessageCorrect1 = `נכון מאוד!${myMessageContinue}`;
 const myMessageCorrect2 = `סיימת את השלב בהצלחה!${myMessageContinue}`;
@@ -19,7 +19,7 @@ function startLevel1(){
     displayIntro(myIntro);
 
     // Display question:
-    runQuest(myQuestions[myIdx], myIdx);
+    runQuest(myQuestions[myIdx]);
 }
 
  
@@ -28,7 +28,7 @@ function startLevel1(){
 // FUNCTIONS
 //==============================================================
 
-function runQuest(v, idx) {
+function runQuest(v) {
 
 
     // 1. Populate the images of the ingredients
@@ -68,28 +68,25 @@ function randAnswers (correctIndex, myRnd) {
     //   were not already used in previous questions as "correct answers".
 
     var myArray = [];
-
     myArray[myRnd] = DishList[correctIndex].DishParams.imgName;
 
-    for (let i = 0; i < 4; i++) { 
-        let myInt = i + 65;
-        let s = String.fromCharCode(myInt);
-
+    for (let i = 0; i < numOptions; i++) { 
         if (i != myRnd) {
-            myRndInt = getRndInteger(0, 40);
+            myRndInt = getRndInteger(0, DishList.length);
             myString = DishList[myRndInt].DishParams.imgName;
             isUsed = myArray.some(myTest2);
 
             while(isUsed || (myRndInt == myRnd)) {
-                myRndInt = getRndInteger(0, 40);
+                myRndInt = getRndInteger(0, DishList.length);
                 myString = DishList[myRndInt].DishParams.imgName;
                 isUsed = myArray.some(myTest2);
             }
-            myArray[i] = s + `<br >${DishList[myRndInt].DishParams.imgName}`;
+            myArray[i] = myString;
         }
-        else {
-            myArray[i] = s + `<br >${DishList[correctIndex].DishParams.imgName}`;
-        }
+    }
+
+    for (let i = myArray.length - 1; i >= 0; i--) {
+        myArray[i] = `${String.fromCharCode(i+65)}<br>${myArray[i]}`
     }
 
     myRndInt = 0;
@@ -115,16 +112,25 @@ function respondOnKey(myInput) {
 
     // Respond on correct answer not during message display:
     if (myInput == myCorrectAnswer && !isMessageTime) {
-        if (detectEndOfLevel()) { displayMessage("messageCorrect", myMessageCorrect2, myChoice); }
+        if (detectEndOfLevel()) {
+            displayMessage("messageCorrect", myMessageCorrect2, myChoice);
+        }
         else { displayMessage("messageCorrect", myMessageCorrect1, myChoice); }
+
+        document.getElementById("messageCorrect").style.backgroundImage = `url(${DishList[myQuestions[myIdx]].DishParams.imgPath})`;
+        document.getElementById("messageCorrect").style.backgroundSize = '40% 60%';
+        document.getElementById("messageCorrect").style.backgroundPosition = 'bottom';
 
         isCorrect = true;
 
+        driveCar(0, batteryUpdate);
+
         changeBattery(batteryUpdate);
         batteryUpdate = 20;
+
     }
     
-    // Respond on "z" during Correc/Wrong Message display:
+    // Respond on "z" during Correct/Wrong Message display:
     else if (myInput == 25 && isMessageTime) {          
         document.getElementById("displayAnswer").style.display = 'none';
         document.getElementById("messageWrong").style.display = 'none';
@@ -144,7 +150,7 @@ function respondOnKey(myInput) {
             else {
                 //Advance to next stage:
                 myIdx++;
-                runQuest(myQuestions[myIdx], myIdx);
+                runQuest(myQuestions[myIdx]);
             }
 
             isCorrect = false;
@@ -178,7 +184,6 @@ function displayMessage(myElementName, myContent, myChoice) {
     let myMessageElement = document.getElementById(myElementName);
     let myAnswerElement = document.getElementById("displayAnswer");
     myMessageElement.style.display = 'block';
-    myMessageElement.style.backgroundImage = 'none';
     myAnswerElement.style.display = 'block';
     myMessageElement.innerHTML = `<br><br>${myContent}`;
     myAnswerElement.innerHTML = myChoice;

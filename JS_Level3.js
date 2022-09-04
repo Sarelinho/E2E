@@ -1,30 +1,31 @@
 //------images------
-const arayes          = myPathDish + "Arayes.jpg";
-const fish_and_chips  = myPathDish + "Fish_and_chips.jpg";
-const havitat_yerek   = myPathDish + "ScrambledEggs.jpg";
-const hrira           = myPathDish + "Hrira.jpg";
-const knafe           = myPathDish + "Knafe.jpg";
-const kuba_selek      = myPathDish + "Kuba.jpg";
-const pankeik         = myPathDish + "Pancake.jpg";
-const pizza           = myPathDish + "Pizza.jpg";
-const shnitzel        = myPathDish + "Schnitzel.jpg";
-const sir_dagim       = myPathDish + "Maroccan_fish.jpg";
+const myPathMemoryGame = "./Images/MemoryGame/"
+const meat          = myPathMemoryGame + "Meat.jpg";
+const bread         = myPathMemoryGame + "Bread.jpg";
+const cheese        = myPathMemoryGame + "Cheese.jpg";
+const butcher       = myPathMemoryGame + "Butcher.jpg";
+const mincer        = myPathMemoryGame + "Mincer.jpg";
+const vegetables    = myPathMemoryGame + "Vegetables.jpg";
+const fruits        = myPathMemoryGame + "Fruits.jpg";
+const knifes        = myPathMemoryGame + "Knifes.jpg";
+const dishes        = myPathMemoryGame + "Dishes.jpg";
+const poike         = myPathMemoryGame + "Poike.jpg";
 const backCard = "./Images/back_cards.jpg";
 
 var myAttempts = 0;
 const myFinish = document.getElementById("gameover");
 
 const games = [
-    arayes, arayes,
-    fish_and_chips, fish_and_chips,
-    havitat_yerek, havitat_yerek,
-    hrira, hrira,
-    knafe, knafe,
-    kuba_selek, kuba_selek,
-    pankeik, pankeik,
-    pizza, pizza,
-    shnitzel, shnitzel,
-    sir_dagim, sir_dagim
+    meat, meat,
+    bread, bread,
+    cheese, cheese,
+    butcher, butcher,
+    mincer, mincer,
+    vegetables, vegetables,
+    fruits, fruits,
+    knifes, knifes,
+    dishes, dishes,
+    poike, poike
 ];
 
 displayIntro(myIntro);
