@@ -270,7 +270,6 @@ function getDishes() {
     return myDishArray;
 }
 
-
 //==================== Battery Update =============================================================
 
 var batteryUpdate = 20;
@@ -288,10 +287,48 @@ function changeBattery(myInput) {
   else /*if (batteryResult > 80 && batteryResult <= 100)*/  batteryStyle.backgroundColor =  "#00ff00";
   if (batteryResult >= 100) document.getElementById("battery_head").style.backgroundColor = "#00ff00";
 
-
   batteryHeader.innerHTML = `ביצוע: ${batteryResult}%`;
 }
 //==================== Battery Update  - end =======================================================
+
+//==================== Drive the Car ===============================================================
+
+var myAnswerCounter = 0;
+var myStation = 1;
+
+function driveCar(myInt, myPerformance) {
+    myAnswerCounter++;
+    myAnswerCounter += myInt;
+    if (myAnswerCounter % 2 == 0) {
+        sendCarDriveGrant(myStation);
+    }
+}
+
+var timerId = 0;
+
+async function sendCarDriveGrant(myStation) {
+    const myPath = "http://e2e-race.gil-cohen-portfolio.com/race/" + myStation + "/";
+    clearTimeout(timerId);
+
+    await fetch(`${myPath}1`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+
+    timerId = setTimeout(async () => {
+        await fetch(`${myPath}-1`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    }, 10000); // 10 seconds
+}
+
+//==================== Drive the Car  - end =======================================================
+
 
 function myTest1(v) {
     return v == myRndInt;
