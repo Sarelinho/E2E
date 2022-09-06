@@ -300,12 +300,11 @@ var workingTime = 5000;
 const carServer = 'http://e2e-race.gil-cohen-portfolio.com/race/send-grant/';
 
 function driveCar() {
-    //if (++myAnswerCounter % 2 == 0) 
+    if (++myAnswerCounter % 2 == 0) 
         sendCarDriveGrant(stationNum);
 }
 
 async function sendCarDriveGrant(stationNum) {
-    // let stationNum = 1; // Change to your station number
 
     clearTimeout(timerId);
 
