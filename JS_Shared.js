@@ -294,37 +294,40 @@ function changeBattery(myInput) {
 //==================== Drive the Car ===============================================================
 
 var myAnswerCounter = 0;
-var myStation = 1;
+var stationNum = 1;
+var timerId = 0;
+var workingTime = 5000;
+const carServer = 'http://e2e-race.gil-cohen-portfolio.com/race/send-grant/';
 
-function driveCar(myInt, myPerformance) {
-    myAnswerCounter++;
-    myAnswerCounter += myInt;
-    if (myAnswerCounter % 2 == 0) {
-        sendCarDriveGrant(myStation);
-    }
+function driveCar() {
+    //if (++myAnswerCounter % 2 == 0) 
+        sendCarDriveGrant(stationNum);
 }
 
-var timerId = 0;
+async function sendCarDriveGrant(stationNum) {
+    // let stationNum = 1; // Change to your station number
 
-async function sendCarDriveGrant(myStation) {
-    const myPath = "http://e2e-race.gil-cohen-portfolio.com/race/" + myStation + "/";
     clearTimeout(timerId);
 
-    await fetch(`${myPath}1`, {
+    await fetch(`${carServer}${stationNum}/1`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         },
     })
 
-    timerId = setTimeout(async () => {
-        await fetch(`${myPath}-1`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-    }, 10000); // 10 seconds
+    await new Promise(async resolve => {
+        timerId = setTimeout(async () => {
+            let res = await fetch(`${carServer}${stationNum}/-1`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            resolve(res);
+        }, workingTime)
+    })
+    return;
 }
 
 //==================== Drive the Car  - end =======================================================
