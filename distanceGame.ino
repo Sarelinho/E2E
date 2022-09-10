@@ -4,7 +4,7 @@
 
 #define trigPin 4
 #define echoPin 3
-#define MAX_DISTANCE 20
+#define MAX_DISTANCE 30
 
 bool answerFlag = false;
 
@@ -13,23 +13,23 @@ char myAnswer;
 
 void determinesTheAnswer(byte b){
 
-  if((b >= 3) && (b <=5) &&(!answerFlag)) {
-       Keyboard.write('a');
+  if((b >= 6) && (b <=8) &&(!answerFlag)) {
+      
+      Keyboard.write('a');  
       answerFlag = true;
-       
-    }else if((b >= 7) && (b <= 9) &&(!answerFlag)){
-         Keyboard.write('b');
-        answerFlag = true;
+    }else if((b >= 9) && (b <= 11) &&(!answerFlag)){
         
-    }else if((b >= 10) && (b <= 13) &&(!answerFlag)){
+        Keyboard.write('b');  
+        answerFlag = true;
+    }else if((b >= 12) && (b <= 15) &&(!answerFlag)){
+      
       Keyboard.write('c');
       answerFlag = true;
-        
-    }else if((b >= 14) && (b <= 15) &&(!answerFlag)){
-       Keyboard.write('d');
-      answerFlag = true; 
+    }else if((b >= 16) && (b <= 18) &&(!answerFlag)){
       
-    }else if((answerFlag) && (b > 15)){
+      Keyboard.write('d');
+      answerFlag = true; 
+    }else if((answerFlag) && (b > 18)){
       
       Keyboard.write('z');
       answerFlag = false;
@@ -65,14 +65,15 @@ int distanceSum(){
 }
 
 void loop() {
-          
-        if(!answerFlag){
-           delay(4000);
-        }
-        determinesTheAnswer(distanceSum());
-     /* Serial.print("distance(cm): ");
+
+          if(!answerFlag){
+            delay(5000);
+          }
+      
+       determinesTheAnswer(distanceSum());
+      /*Serial.print("distance(cm): ");
       Serial.println(distanceSum());*/
 
       
 }
-//czdzaazbzczdz
+//aabbaa
